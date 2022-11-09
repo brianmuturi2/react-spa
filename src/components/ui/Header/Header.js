@@ -43,7 +43,7 @@ function Header(props) {
             <AppBar position={'fixed'} color={'primary'}>
                 <Toolbar disableGutters>
                     <img src={logo} alt="company logo" className={styles.logo}/>
-                    <Tabs aria-label="navigation tabs" value={tabValue} onChange={handleChange} textColor="secondary" indicatorColor="secondary" className={styles.tabContainer}>
+                    <Tabs aria-label="navigation tabs" value={tabValue} onChange={handleChange} textColor="secondary" indicatorColor="primary" className={styles.tabContainer}>
                         <Tab label="Home" {...a11yProps(0)} className={styles.tab} />
                         <Tab label="Services" {...a11yProps(1)} className={styles.tab} />
                         <Tab label="The Revolution" {...a11yProps(2)} className={styles.tab} />
