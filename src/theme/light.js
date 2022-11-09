@@ -7,7 +7,8 @@ const light = createTheme({
     palette: {
         common: {
             blue: `${arcBlue}`,
-            orange: `${arcOrange}`
+            orange: `${arcOrange}`,
+            grey: '#fafafa'
         },
         primary: {
             main: `${arcBlue}`
@@ -17,8 +18,11 @@ const light = createTheme({
         }
     },
     typography: {
-        h3: {
-            fontWeight: 300
+        tab: {
+            fontFamily: 'Raleway',
+            textTransform: 'none',
+            fontWeight: 700,
+            fontSize: '1rem'
         }
     }
 });

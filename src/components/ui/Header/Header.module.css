@@ -5,3 +5,14 @@
 .toolbar {
     margin-bottom: 3em;
 }
+
+.tabContainer {
+    margin-left: auto;
+}
+
+.tab {
+    font-family: Raleway;
+    text-transform: none;
+    font-weight: 700;
+    font-size: 1rem;
+}

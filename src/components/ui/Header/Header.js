@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 import styles from './Header.module.css';
@@ -20,12 +22,33 @@ function ElevationScroll(props) {
     });
 }
 
+function a11yProps(index) {
+    return {
+        id: `navigation-tab-${index}`,
+        'aria-controls': `navigation-tabpanel-${index}`,
+    };
+}
+
 function Header(props) {
+
+    const [tabValue, setValue] = useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     return (
         <ElevationScroll>
             <AppBar position={'fixed'} color={'primary'}>
                 <Toolbar disableGutters>
                     <img src={logo} alt="company logo" className={styles.logo}/>
+                    <Tabs aria-label="navigation tabs" value={tabValue} onChange={handleChange} textColor="secondary" indicatorColor="secondary" className={styles.tabContainer}>
+                        <Tab label="Home" {...a11yProps(0)} className={styles.tab} />
+                        <Tab label="Services" {...a11yProps(1)} className={styles.tab} />
+                        <Tab label="The Revolution" {...a11yProps(2)} className={styles.tab} />
+                        <Tab label="About Us" {...a11yProps(3)} className={styles.tab} />
+                        <Tab label="Contact Us" {...a11yProps(4)} className={styles.tab} />
+                    </Tabs>
                 </Toolbar>
             </AppBar>
         </ElevationScroll>
