@@ -7,7 +7,7 @@ function App() {
   return (
       <ThemeProvider theme={light}>
           <Header/>
-          <Toolbar sx={{marginBottom: '3em'}}/>
+          <Toolbar sx={{marginBottom: '1em'}}/>
           <div className="App">
               Hello!
           </div>

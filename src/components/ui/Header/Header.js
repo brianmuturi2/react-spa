@@ -4,6 +4,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Button from '@mui/material/Button';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 import styles from './Header.module.css';
@@ -49,6 +50,7 @@ function Header(props) {
                         <Tab label="About Us" {...a11yProps(3)} className={styles.tab} />
                         <Tab label="Contact Us" {...a11yProps(4)} className={styles.tab} />
                     </Tabs>
+                    <Button variant="contained" color={'secondary'} className={styles.estimate}>Free Estimate</Button>
                 </Toolbar>
             </AppBar>
         </ElevationScroll>

@@ -1,5 +1,5 @@
 .logo {
-    height: 7em;
+    height: 5em;
 }
 
 .toolbar {
@@ -15,4 +15,15 @@
     text-transform: none;
     font-weight: 700;
     font-size: 1rem;
+    color: white;
+}
+
+.estimate {
+    border-radius: 50px;
+    margin-left: 50px;
+    margin-right: 25px;
+    font-family: Pacifico;
+    text-transform: none;
+    font-size: 1rem;
+    color: white;
 }
