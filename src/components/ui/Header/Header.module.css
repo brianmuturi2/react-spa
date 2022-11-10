@@ -27,3 +27,17 @@
     font-size: 1rem;
     color: white;
 }
+
+.menu {
+    background-color: #0B72B9;
+    color: white;
+    border-radius: 0px;
+}
+
+.menuItem {
+    font-family: Raleway;
+    text-transform: none;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+}
