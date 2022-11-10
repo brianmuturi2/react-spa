@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -38,6 +38,20 @@ function Header(props) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    useEffect(() => {
+       if (window.location.pathname === '/' && tabValue !== 0) {
+           setValue(0)
+       } else if (window.location.pathname === '/services' && tabValue !== 1) {
+           setValue(1)
+       } else if (window.location.pathname === '/revolution' && tabValue !== 2) {
+           setValue(2)
+       } else if (window.location.pathname === '/about' && tabValue !== 3) {
+           setValue(3)
+       } else if (window.location.pathname === '/contact' && tabValue !== 4) {
+           setValue(4)
+       }
+    }, []);
 
     return (
         <ElevationScroll>
