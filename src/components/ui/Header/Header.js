@@ -9,6 +9,9 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import styles from './Header.module.css';
 import logo from '../../../assets/logo.svg'
 import {Link} from 'react-router-dom';
@@ -34,6 +37,9 @@ function a11yProps(index) {
 }
 
 function Header(props) {
+
+    const theme = useTheme();
+    const matchesDevice = useMediaQuery(theme.breakpoints.down('lg'));
 
     const [tabValue, setValue] = useState(0);
 
@@ -110,44 +116,52 @@ function Header(props) {
        }
     }, []);
 
+    const tabs = (
+        <>
+            <Tabs aria-label="navigation tabs" value={tabValue} onChange={handleTabChange} textColor="secondary" indicatorColor="primary" className={styles.tabContainer}>
+                <Tab label="Home" {...a11yProps(0)} className={styles.tab} component={Link} to={'/'}/>
+                <Tab label="Services" {...a11yProps(1)} className={styles.tab}
+                     id="services-button"
+                     aria-controls={menuOpen ? 'services-menu' : undefined}
+                     aria-haspopup="true"
+                     aria-expanded={menuOpen ? 'true' : undefined}
+                     onMouseOver={handleMenuClick}/>
+                <Tab label="The Revolution" {...a11yProps(2)} className={styles.tab} component={Link} to={'revolution'}/>
+                <Tab label="About Us" {...a11yProps(3)} className={styles.tab} component={Link} to={'about'} />
+                <Tab label="Contact Us" {...a11yProps(4)} className={styles.tab} component={Link} to={'contact'}/>
+            </Tabs>
+            <Button variant="contained" color={'secondary'} className={styles.estimate} component={Link} to={'estimate'}>Free Estimate</Button>
+            <Menu
+                id="services-menu"
+                anchorEl={menuAnchorEl}
+                open={menuOpen}
+                onClose={handleMenuClose}
+                classes={{paper: styles.menu}}
+                MenuListProps={{
+                    'aria-labelledby': 'services-button',
+                    onMouseLeave: handleMenuClose
+                }}
+            >
+                {
+                    menuOptions.map((menu,index) => (
+                        <MenuItem onClick={handleMenuItemClick.bind(this, index)}
+                                  component={Link} to={`/${menu.link}`}
+                                  classes={{root: styles.menuItem, selected: styles.menuItemSelected}}
+                                  selected={index === selectedMenuIndex}
+                                  key={index}>{menu.label}</MenuItem>))
+                }
+            </Menu>
+        </>
+    );
+
     return (
         <ElevationScroll>
             <AppBar position={'fixed'} color={'primary'}>
                 <Toolbar disableGutters>
-                    <img src={logo} alt="company logo" className={styles.logo}/>
-                    <Tabs aria-label="navigation tabs" value={tabValue} onChange={handleTabChange} textColor="secondary" indicatorColor="primary" className={styles.tabContainer}>
-                        <Tab label="Home" {...a11yProps(0)} className={styles.tab} component={Link} to={'/'}/>
-                        <Tab label="Services" {...a11yProps(1)} className={styles.tab}
-                             id="services-button"
-                             aria-controls={menuOpen ? 'services-menu' : undefined}
-                             aria-haspopup="true"
-                             aria-expanded={menuOpen ? 'true' : undefined}
-                             onMouseOver={handleMenuClick}/>
-                        <Tab label="The Revolution" {...a11yProps(2)} className={styles.tab} component={Link} to={'revolution'}/>
-                        <Tab label="About Us" {...a11yProps(3)} className={styles.tab} component={Link} to={'about'} />
-                        <Tab label="Contact Us" {...a11yProps(4)} className={styles.tab} component={Link} to={'contact'}/>
-                    </Tabs>
-                    <Button variant="contained" color={'secondary'} className={styles.estimate} component={Link} to={'estimate'}>Free Estimate</Button>
-                    <Menu
-                        id="services-menu"
-                        anchorEl={menuAnchorEl}
-                        open={menuOpen}
-                        onClose={handleMenuClose}
-                        classes={{paper: styles.menu}}
-                        MenuListProps={{
-                            'aria-labelledby': 'services-button',
-                            onMouseLeave: handleMenuClose
-                        }}
-                    >
-                        {
-                            menuOptions.map((menu,index) => (
-                                <MenuItem onClick={handleMenuItemClick.bind(this, index)}
-                                          component={Link} to={`/${menu.link}`}
-                                          classes={{root: styles.menuItem, selected: styles.menuItemSelected}}
-                                          selected={index === selectedMenuIndex}
-                                          key={index}>{menu.label}</MenuItem>))
-                        }
-                    </Menu>
+                    <img src={logo} alt="company logo" className={[!matchesDevice ? styles.logo : styles.logoSmall]}/>
+                    {
+                        !matchesDevice && tabs
+                    }
                 </Toolbar>
             </AppBar>
         </ElevationScroll>
