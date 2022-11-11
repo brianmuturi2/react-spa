@@ -45,3 +45,8 @@
 .menuItemSelected {
     color: #FFBA60;
 }
+
+.drawerIcon {
+    margin-left: auto;
+    margin-right: 25px;
+}

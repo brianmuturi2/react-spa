@@ -11,6 +11,10 @@ import MenuItem from '@mui/material/MenuItem';
 
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import styles from './Header.module.css';
 import logo from '../../../assets/logo.svg'
@@ -38,14 +42,26 @@ function a11yProps(index) {
 
 function Header(props) {
 
+    /**
+     * MEDIA QUERIES
+     * */
+
     const theme = useTheme();
     const matchesDevice = useMediaQuery(theme.breakpoints.down('lg'));
+
+    /**
+     * TABS
+     * */
 
     const [tabValue, setValue] = useState(0);
 
     const handleTabChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    /**
+     * SERVICES MENU
+     * */
 
     const [menuAnchorEl, setMenuAnchorEl] = useState(null);
     const menuOpen = Boolean(menuAnchorEl);
@@ -77,6 +93,10 @@ function Header(props) {
         }
     ]
 
+    /**
+     * MENU ITEMS
+     * */
+
     const [selectedMenuIndex, setSelectedMenuIndex] = useState(0)
 
     const handleMenuItemClick = (i) => {
@@ -85,6 +105,10 @@ function Header(props) {
         setSelectedMenuIndex(i)
         handleMenuClose();
     }
+
+    /**
+     * UPDATE SELECTED TAB & MENU ITEM ON PAGE REFRESH
+     * */
 
     useEffect(() => {
        if (window.location.pathname === '/' && tabValue !== 0) {
@@ -154,13 +178,50 @@ function Header(props) {
         </>
     );
 
+    /**
+     * DRAWER
+     * */
+
+    const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const [drawerOpened, setDrawerOpened] = useState(false);
+
+    const toggleDrawer = () => {
+        setDrawerOpened(!drawerOpened);
+    }
+
+    const drawerList = [];
+
+    const drawer = (
+        <>
+            <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="end"
+                onClick={toggleDrawer}
+                sx={{ ...(drawerOpened && { display: 'none' }) }}
+                className={styles.drawerIcon}
+            >
+                <MenuIcon />
+            </IconButton>
+            <SwipeableDrawer
+                disableBackdropTransition={!iOS}
+                disableDiscovery={iOS}
+                anchor={'right'}
+                open={drawerOpened}
+                onClose={toggleDrawer}
+                onOpen={toggleDrawer}>
+                Example
+            </SwipeableDrawer>
+        </>
+    )
+
     return (
         <ElevationScroll>
             <AppBar position={'fixed'} color={'primary'}>
                 <Toolbar disableGutters>
                     <img src={logo} alt="company logo" className={[!matchesDevice ? styles.logo : styles.logoSmall]}/>
                     {
-                        !matchesDevice && tabs
+                        !matchesDevice ? tabs : drawer
                     }
                 </Toolbar>
             </AppBar>
