@@ -86,6 +86,21 @@ function Header(props) {
        } else if (
            (window.location.pathname === '/services' || window.location.pathname === '/custom-software' || window.location.pathname === '/mobile-apps' || window.location.pathname === '/websites') && tabValue !== 1) {
            setValue(1)
+
+           switch(window.location.pathname) {
+               case '/custom-software':
+                   setSelectedMenuIndex(1)
+                   break;
+               case '/mobile-apps':
+                   setSelectedMenuIndex(2)
+                   break;
+               case '/websites':
+                   setSelectedMenuIndex(3)
+                   break;
+               default:
+                   setSelectedMenuIndex(0)
+           }
+
        } else if (window.location.pathname === '/revolution' && tabValue !== 2) {
            setValue(2)
        } else if (window.location.pathname === '/about' && tabValue !== 3) {
@@ -128,7 +143,7 @@ function Header(props) {
                             menuOptions.map((menu,index) => (
                                 <MenuItem onClick={handleMenuItemClick.bind(this, index)}
                                           component={Link} to={`/${menu.link}`}
-                                          classes={{root: styles.menuItem}}
+                                          classes={{root: styles.menuItem, selected: styles.menuItemSelected}}
                                           selected={index === selectedMenuIndex}
                                           key={index}>{menu.label}</MenuItem>))
                         }
