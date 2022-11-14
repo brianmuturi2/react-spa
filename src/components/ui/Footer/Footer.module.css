@@ -1,0 +1,19 @@
+.footer {
+    background-color: #0B72B9;
+    width: 100%;
+    z-index: 1302;
+    /*position: relative;*/
+}
+
+.adornment {
+    width: 25em;
+    vertical-align: bottom;
+}
+
+.adornmentMd {
+    width: 21em;
+}
+
+.adornmentSm {
+    width: 15em;
+}

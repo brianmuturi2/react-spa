@@ -19,6 +19,7 @@ import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import Estimate from './pages/estimate/Estimate';
 import Home from './pages/home/Home';
+import Footer from './components/ui/Footer/Footer';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
                   <Route exact path={'/contact'} element={<Contact/>}/>
                   <Route exact path={'/estimate'} element={<Estimate/>}/>
               </Routes>
+              <Footer/>
               </StyledEngineProvider>
           </BrowserRouter>
 

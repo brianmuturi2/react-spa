@@ -242,7 +242,7 @@ function Header(props) {
         <ElevationScroll>
             <AppBar position={'fixed'} color={'primary'}>
                 <Toolbar disableGutters>
-                    <img src={logo} alt="company logo" className={[!matchesDevice ? styles.logo : styles.logoSmall]}/>
+                    <img src={logo} alt="company logo" className={!matchesDevice ? styles.logo : styles.logoSmall}/>
                     {
                         !matchesDevice ? tabs : drawer
                     }
