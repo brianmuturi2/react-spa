@@ -20,13 +20,32 @@ import Contact from './pages/contact/Contact';
 import Estimate from './pages/estimate/Estimate';
 import Home from './pages/home/Home';
 import Footer from './components/ui/Footer/Footer';
+import {useState} from 'react';
 
 function App() {
+    /**
+     * Tabs & Menu state
+     * */
+
+    const [tabValue, setTabValue] = useState(0);
+
+    const setTab = (newValue) => {
+        setTabValue(newValue);
+    };
+
+    const [selectedMenuIndex, setSelectedMenuIndex] = useState(0)
+
+    const setMenuItem = (i) => {
+        setSelectedMenuIndex(i)
+    }
+
+    /**/
+
   return (
       <ThemeProvider theme={light}>
           <BrowserRouter>
               <StyledEngineProvider injectFirst>
-              <Header/>
+              <Header selectedTab={tabValue} setSelectedTab={setTab} selectedMenu={selectedMenuIndex} setSelectedMenu={setMenuItem}/>
               <Toolbar sx={{marginBottom: '1em'}}/>
               <Routes>
                   <Route exact path={'/'} element={<Home/>}/>
@@ -39,7 +58,7 @@ function App() {
                   <Route exact path={'/contact'} element={<Contact/>}/>
                   <Route exact path={'/estimate'} element={<Estimate/>}/>
               </Routes>
-              <Footer/>
+              <Footer selectedTab={tabValue} setSelectedTab={setTab} selectedMenu={selectedMenuIndex} setSelectedMenu={setMenuItem}/>
               </StyledEngineProvider>
           </BrowserRouter>
 

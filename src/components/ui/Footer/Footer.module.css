@@ -17,3 +17,15 @@
 .adornmentSm {
     width: 15em;
 }
+
+.gridContainer {
+    position: absolute;
+}
+
+.link {
+    color: white;
+    font-family: Arial;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-decoration: none;
+}

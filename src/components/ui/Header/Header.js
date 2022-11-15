@@ -44,7 +44,7 @@ function a11yProps(index) {
     };
 }
 
-function Header(props) {
+function Header({selectedTab, setSelectedTab, selectedMenu, setSelectedMenu}) {
 
     /**
      * MEDIA QUERIES
@@ -57,10 +57,11 @@ function Header(props) {
      * TABS
      * */
 
-    const [tabValue, setValue] = useState(0);
-
     const handleTabChange = (event, newValue) => {
-        setValue(newValue);
+        if (selectedTab === 1) {
+            setSelectedMenu(null);
+        }
+        setSelectedTab(newValue);
     };
 
     /**
@@ -72,7 +73,6 @@ function Header(props) {
 
     const handleMenuClick = (event) => {
         setMenuAnchorEl(event.currentTarget);
-        setValue(1)
     };
     const handleMenuClose = () => {
         setMenuAnchorEl(null);
@@ -101,52 +101,57 @@ function Header(props) {
      * MENU ITEMS
      * */
 
-    const [selectedMenuIndex, setSelectedMenuIndex] = useState(0)
-
     const handleMenuItemClick = (i) => {
-        console.log('Setting index', i);
         setMenuAnchorEl(null);
-        setSelectedMenuIndex(i)
+        setSelectedMenu(i)
+        setSelectedTab(1);
         handleMenuClose();
     }
 
     /**
-     * UPDATE SELECTED TAB & MENU ITEM ON PAGE REFRESH
+     * DRAWER
      * */
 
+    const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const [drawerOpened, setDrawerOpened] = useState(false);
+
+    const toggleDrawer = () => {
+        setDrawerOpened(!drawerOpened);
+    }
+
     useEffect(() => {
-       if (window.location.pathname === '/' && tabValue !== 0) {
-           setValue(0)
-       } else if (
-           (window.location.pathname === '/services' || window.location.pathname === '/custom-software' || window.location.pathname === '/mobile-apps' || window.location.pathname === '/websites') && tabValue !== 1) {
-           setValue(1)
+        if (window.location.pathname === '/' && selectedTab !== 0) {
+            setSelectedTab(0)
+        } else if (
+            (window.location.pathname === '/services' || window.location.pathname === '/custom-software' || window.location.pathname === '/mobile-apps' || window.location.pathname === '/websites') && selectedTab !== 1) {
+            setSelectedTab(1)
 
-           switch(window.location.pathname) {
-               case '/custom-software':
-                   setSelectedMenuIndex(1)
-                   break;
-               case '/mobile-apps':
-                   setSelectedMenuIndex(2)
-                   break;
-               case '/websites':
-                   setSelectedMenuIndex(3)
-                   break;
-               default:
-                   setSelectedMenuIndex(0)
-           }
+            switch(window.location.pathname) {
+                case '/custom-software':
+                    setSelectedMenu(1)
+                    break;
+                case '/mobile-apps':
+                    setSelectedMenu(2)
+                    break;
+                case '/websites':
+                    setSelectedMenu(3)
+                    break;
+                default:
+                    setSelectedMenu(0)
+            }
 
-       } else if (window.location.pathname === '/revolution' && tabValue !== 2) {
-           setValue(2)
-       } else if (window.location.pathname === '/about' && tabValue !== 3) {
-           setValue(3)
-       } else if (window.location.pathname === '/contact' && tabValue !== 4) {
-           setValue(4)
-       }
+        } else if (window.location.pathname === '/revolution' && selectedTab !== 2) {
+            setSelectedTab(2)
+        } else if (window.location.pathname === '/about' && selectedTab !== 3) {
+            setSelectedTab(3)
+        } else if (window.location.pathname === '/contact' && selectedTab !== 4) {
+            setSelectedTab(4)
+        }
     }, []);
 
     const tabs = (
         <>
-            <Tabs aria-label="navigation tabs" value={tabValue} onChange={handleTabChange} textColor="secondary" indicatorColor="primary" className={styles.tabContainer}>
+            <Tabs aria-label="navigation tabs" value={selectedTab} onChange={handleTabChange} textColor="secondary" indicatorColor="primary" className={styles.tabContainer}>
                 <Tab label="Home" {...a11yProps(0)} className={styles.tab} component={Link} to={'/'}/>
                 <Tab label="Services" {...a11yProps(1)} className={styles.tab}
                      id="services-button"
@@ -175,23 +180,12 @@ function Header(props) {
                         <MenuItem onClick={handleMenuItemClick.bind(this, index)}
                                   component={Link} to={`/${menu.link}`}
                                   classes={{root: styles.menuItem, selected: styles.menuItemSelected}}
-                                  selected={index === selectedMenuIndex}
+                                  selected={index === selectedMenu}
                                   key={index}>{menu.label}</MenuItem>))
                 }
             </Menu>
         </>
     );
-
-    /**
-     * DRAWER
-     * */
-
-    const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
-    const [drawerOpened, setDrawerOpened] = useState(false);
-
-    const toggleDrawer = () => {
-        setDrawerOpened(!drawerOpened);
-    }
 
     const drawer = (
         <>
