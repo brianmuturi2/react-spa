@@ -29,3 +29,21 @@
     font-weight: bold;
     text-decoration: none;
 }
+
+.icon {
+    height: 3em;
+    width: 3em;
+}
+
+.socialContainer {
+    position: absolute;
+    margin-top: -6em;
+    right: 1.5em;
+}
+
+@media only screen and (max-width: 600px) {
+    .icon {
+        height: 2em;
+        width: 2em;
+    }
+}

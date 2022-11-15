@@ -147,7 +147,7 @@ function Header({selectedTab, setSelectedTab, selectedMenu, setSelectedMenu}) {
         } else if (window.location.pathname === '/contact' && selectedTab !== 4) {
             setSelectedTab(4)
         }
-    }, []);
+    }, [selectedTab, setSelectedTab, setSelectedMenu]);
 
     const tabs = (
         <>
