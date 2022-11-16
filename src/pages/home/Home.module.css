@@ -1,0 +1,71 @@
+.header {
+    font-family: Raleway;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    color: #0B72B9;
+}
+
+.animation {
+    max-width: 50em;
+    min-width: 21em;
+    margin-top: 2em;
+    margin-left: 10%;
+}
+
+@media only screen and (max-width: 600px) {
+    .animation {
+        max-width: 30em;
+    }
+}
+
+.estimateBtn {
+    border-radius: 50px;
+    margin-right: 40px;
+    font-family: Pacifico;
+    text-transform: none;
+    font-size: 1rem;
+    color: white;
+    height: 45px;
+    width: 145px;
+}
+
+.btnContainer {
+    margin-top: 1em;
+}
+
+.learnBtn {
+    border-color: #0B72B9;
+    border-width: 2px;
+    text-transform: none;
+    border-radius: 50px;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 0.9rem;
+    height: 45px;
+    width: 145px;
+    color: #0B72B9;
+}
+
+@media only screen and (max-width: 900px) {
+    .mainContainer {
+        margin-top: 3em;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .mainContainer {
+        margin-top: 2em;
+    }
+}
+
+.heroTextContainer {
+    min-width: 21.5em;
+    margin-left: 1em;
+}
+
+@media only screen and (max-width: 600px) {
+    .heroTextContainer {
+        margin-left: 0;
+    }
+}

@@ -163,7 +163,7 @@ function Header({selectedTab, setSelectedTab, selectedMenu, setSelectedMenu}) {
                 <Tab label="About Us" {...a11yProps(3)} className={styles.tab} component={Link} to={'about'} />
                 <Tab label="Contact Us" {...a11yProps(4)} className={styles.tab} component={Link} to={'contact'}/>
             </Tabs>
-            <Button variant="contained" color={'secondary'} className={styles.estimate} component={Link} to={'estimate'}>Free Estimate</Button>
+            <Button variant="contained" color={'secondary'} className={styles.estimateBtn} component={Link} to={'estimate'}>Free Estimate</Button>
             <Menu
                 id="services-menu"
                 anchorEl={menuAnchorEl}
