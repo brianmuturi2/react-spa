@@ -1,9 +1,28 @@
-.header {
+.heading2 {
     font-family: Raleway;
     font-weight: 700;
     font-size: 2.5rem;
     line-height: 1.5;
     color: #0B72B9;
+}
+
+.heading4 {
+    font-family: Raleway;
+    font-size: 1.75rem;
+    color: #0B72B9;
+    font-weight: 700;
+}
+
+.subtitle1 {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #868686;
+    margin-bottom: 1em;
+}
+
+.orangeText {
+    font-family: Pacifico;
+    color: #FFBA60;
 }
 
 .animation {
@@ -41,10 +60,15 @@
     border-radius: 50px;
     font-family: Roboto;
     font-weight: bold;
-    font-size: 0.9rem;
+    color: #0B72B9;
+    font-size: 0.7rem;
+    height: 35px;
+}
+
+.learnBtnHeader {
     height: 45px;
     width: 145px;
-    color: #0B72B9;
+    font-size: 0.9rem;
 }
 
 @media only screen and (max-width: 900px) {
@@ -67,5 +91,35 @@
 @media only screen and (max-width: 600px) {
     .heroTextContainer {
         margin-left: 0;
+    }
+}
+
+.serviceIcon {
+    margin-left: 2em;
+}
+
+.serviceContainer {
+    margin-top: 12em;
+}
+
+.serviceTextContainer {
+    margin-left: 5em;
+}
+
+@media only screen and (max-width: 830px) {
+    .serviceContainer {
+        justify-content: center;
+    }
+    .serviceTextContainer {
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 745px) {
+    .serviceIcon {
+        margin-left: 0;
+    }
+    .serviceTextContainer {
+        text-align: center;
     }
 }
