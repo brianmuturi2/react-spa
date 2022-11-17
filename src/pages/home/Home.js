@@ -20,6 +20,7 @@ function Home() {
 
     const theme = useTheme();
     const matchesSmDevice = useMediaQuery(theme.breakpoints.down('sm'));
+    const matchesXsDevice = useMediaQuery(theme.breakpoints.down('xs'));
 
     const defaultOptions = {
         loop: true,
@@ -159,16 +160,30 @@ function Home() {
                     </Grid>
                 </Grid>
                 <Grid item>
-                    <Grid container direction={'row'} style={{height: '80em'}} alignItems={'center'}>
-                        <Grid item style={{position: 'absolute'}}>
-                            <Grid container direction={'column'}>
-                                <Typography variant={'h2'} style={{color: 'white'}} className={styles.heading2}>About Us</Typography>
-                                <Typography variant={'subtitle2'} className={styles.subtitle2}>Let's get personal.</Typography>
-                                <Grid item>
-                                    <Button variant={'outlined'} className={styles.learnBtn} style={{color: 'white', borderColor: 'white'}}>
-                                        <span style={{marginRight: 10}}>Learn More</span>
-                                        <ButtonArrow width={10} height={10} fill={'white'}/>
-                                    </Button>
+                    <Grid container direction={'row'} style={{height: '50em'}} alignItems={'center'}>
+                        <Grid item container style={{position: 'absolute', textAlign: matchesSmDevice ? 'center' : 'inherit'}} direction={matchesSmDevice ? 'column' : 'row'} spacing={matchesSmDevice ? 10 : 0}>
+                            <Grid item sm style={{marginLeft: `${matchesSmDevice ? '0' : '5em'}`}}>
+                                <Grid container direction={'column'}>
+                                    <Typography variant={'h2'} style={{color: 'white'}} className={styles.heading2}>About Us</Typography>
+                                    <Typography variant={'subtitle2'} className={styles.subtitle2}>Let's get personal.</Typography>
+                                    <Grid item>
+                                        <Button variant={'outlined'} className={styles.learnBtn} style={{color: 'white', borderColor: 'white'}}>
+                                            <span style={{marginRight: 10}}>Learn More</span>
+                                            <ButtonArrow width={10} height={10} fill={'white'}/>
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid item sm style={{marginRight: `${matchesSmDevice ? '0' : '5em'}`, textAlign: matchesSmDevice ? 'center' : 'right'}}>
+                                <Grid container direction={'column'}>
+                                    <Typography variant={'h2'} style={{color: 'white'}} className={styles.heading2}>Contact Us</Typography>
+                                    <Typography variant={'subtitle2'} className={styles.subtitle2}>Say hello! </Typography>
+                                    <Grid item>
+                                        <Button variant={'outlined'} className={styles.learnBtn} style={{color: 'white', borderColor: 'white'}}>
+                                            <span style={{marginRight: 10}}>Learn More</span>
+                                            <ButtonArrow width={10} height={10} fill={'white'}/>
+                                        </Button>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                         </Grid>
