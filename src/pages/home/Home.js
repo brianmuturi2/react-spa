@@ -10,6 +10,7 @@ import styles from './Home.module.css'
 import ButtonArrow from '../../components/ui/ButtonArrow/ButtonArrow';
 import customSoftwareIcon from '../../assets/Custom Software Icon.svg';
 import mobileAppsIcon from '../../assets/mobileIcon.svg';
+import websiteIcon from '../../assets/websiteIcon.svg';
 import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -104,6 +105,31 @@ function Home() {
                         </Grid>
                         <Grid item>
                             <img src={mobileAppsIcon} alt="mobile phone icon" className={styles.leftServiceIcon}/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                {/**
+                 * Website Development
+                 **/}
+                <Grid item>
+                    <Grid container direction={'row'} className={styles.serviceContainer} justifyContent={matchesSmDevice ? 'center' : undefined}>
+                        <Grid item className={styles.leftServiceTextContainer}>
+                            <Typography variant={'h4'} className={styles.heading4}>
+                                Website Development
+                            </Typography>
+                            <Typography variant={'subtitle1'} className={styles.subtitle1}>
+                                Reach More. Discover More. Sell More.
+                            </Typography>
+                            <Typography variant={'subtitle1'} className={styles.subtitle1}>
+                                Optimized for Search Engines, built for speed.
+                            </Typography>
+                            <Button variant={'outlined'} className={styles.learnBtn}>
+                                <span style={{marginRight: 10}}>Learn More</span>
+                                <ButtonArrow width={10} height={10} fill={'#0B72B9'}/>
+                            </Button>
+                        </Grid>
+                        <Grid item>
+                            <img src={websiteIcon} alt="website icon" className={styles.rightServiceIcon}/>
                         </Grid>
                     </Grid>
                 </Grid>
