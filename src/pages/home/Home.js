@@ -4,6 +4,8 @@ import Lottie from 'react-lottie';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 import animationData from '../../animations/landinganimation/data'
 import styles from './Home.module.css'
@@ -131,6 +133,29 @@ function Home() {
                         <Grid item>
                             <img src={websiteIcon} alt="website icon" className={styles.rightServiceIcon}/>
                         </Grid>
+                    </Grid>
+                </Grid>
+                <Grid item>
+                    <Grid container alignItems={'center'} justifyContent={'center'} style={{height: '50em'}} className={styles.serviceContainer}>
+                        <Card className={styles.revolutionCard}>
+                            <CardContent>
+                                <Grid container direction={'column'} style={{textAlign: 'center'}}>
+                                    <Grid item>
+                                        <Typography variant={'h3'} className={styles.heading3} gutterBottom>The Revolution</Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography variant={'subtitle1'} gutterBottom>
+                                            Visionary insights coupled with cutting-edge technology is a recipe for revolution.
+                                        </Typography>
+                                        <Button variant={'outlined'} className={`${styles.learnBtn} ${styles.learnBtnHeader}`}>
+                                            <span style={{marginRight: 10}}>Learn More</span>
+                                            <ButtonArrow width={15} height={15} fill={'#0B72B9'}/>
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </CardContent>
+                        </Card>
+                        <div className={styles.revolutionBackground}/>
                     </Grid>
                 </Grid>
             </Grid>

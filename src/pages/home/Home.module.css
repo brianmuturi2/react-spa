@@ -6,6 +6,12 @@
     color: #0B72B9;
 }
 
+.heading3 {
+    font-family: Pacifico;
+    font-size: 2.5rem;
+    color: #0B72B9;
+}
+
 .heading4 {
     font-family: Raleway;
     font-size: 1.75rem;
@@ -135,5 +141,33 @@
     }
     .leftServiceTextContainer .rightServiceTextContainer {
         text-align: center;
+    }
+}
+
+.revolutionBackground {
+    background-image: url("../../assets/repeatingBackground.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.revolutionCard {
+    position: absolute;
+    box-shadow: 0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12);
+    border-radius: 15px;
+    padding: 10em;
+}
+
+@media only screen and (max-width: 900px) {
+    .revolutionCard {
+        padding: 3em;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .revolutionCard {
+        padding: 2em;
     }
 }
