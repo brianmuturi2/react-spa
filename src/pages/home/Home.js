@@ -158,6 +158,23 @@ function Home() {
                         <div className={styles.revolutionBackground}/>
                     </Grid>
                 </Grid>
+                <Grid item>
+                    <Grid container direction={'row'} style={{height: '80em'}} alignItems={'center'}>
+                        <Grid item style={{position: 'absolute'}}>
+                            <Grid container direction={'column'}>
+                                <Typography variant={'h2'} style={{color: 'white'}} className={styles.heading2}>About Us</Typography>
+                                <Typography variant={'subtitle2'} className={styles.subtitle2}>Let's get personal.</Typography>
+                                <Grid item>
+                                    <Button variant={'outlined'} className={styles.learnBtn} style={{color: 'white', borderColor: 'white'}}>
+                                        <span style={{marginRight: 10}}>Learn More</span>
+                                        <ButtonArrow width={10} height={10} fill={'white'}/>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <div className={styles.infoBackground}/>
+                    </Grid>
+                </Grid>
             </Grid>
     )
 }

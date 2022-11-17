@@ -26,6 +26,12 @@
     margin-bottom: 1em;
 }
 
+.subtitle2 {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
 .orangeText {
     font-family: Pacifico;
     color: #FFBA60;
@@ -170,4 +176,13 @@
     .revolutionCard {
         padding: 2em;
     }
+}
+
+.infoBackground {
+    background-image: url("../../assets/infoBackground.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
 }
