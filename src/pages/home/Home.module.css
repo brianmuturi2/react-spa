@@ -94,32 +94,46 @@
     }
 }
 
-.serviceIcon {
-    margin-left: 2em;
-}
-
 .serviceContainer {
     margin-top: 12em;
 }
 
-.serviceTextContainer {
+.leftServiceTextContainer {
     margin-left: 5em;
 }
 
-@media only screen and (max-width: 830px) {
+.rightServiceIcon {
+    margin-left: 2em;
+}
+
+.leftServiceIcon {
+    margin-right: 5em;
+}
+
+.rightServiceTextContainer {
+    margin-right: 2em;
+}
+
+@media only screen and (max-width: 950px) {
     .serviceContainer {
         justify-content: center;
     }
-    .serviceTextContainer {
+    .leftServiceTextContainer {
+        margin-left: 0;
+    }
+    .leftServiceIcon {
         margin-left: 0;
     }
 }
 
 @media only screen and (max-width: 745px) {
-    .serviceIcon {
-        margin-left: 0;
+    .rightServiceIcon {
+        margin-right: 0;
     }
-    .serviceTextContainer {
+    .rightServiceTextContainer {
+        margin-right: 0;
+    }
+    .leftServiceTextContainer .rightServiceTextContainer {
         text-align: center;
     }
 }

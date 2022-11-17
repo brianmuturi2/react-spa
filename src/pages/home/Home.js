@@ -8,9 +8,15 @@ import Typography from '@mui/material/Typography';
 import animationData from '../../animations/landinganimation/data'
 import styles from './Home.module.css'
 import ButtonArrow from '../../components/ui/ButtonArrow/ButtonArrow';
-import customSoftwareIcon from '../../assets/Custom Software Icon.svg'
+import customSoftwareIcon from '../../assets/Custom Software Icon.svg';
+import mobileAppsIcon from '../../assets/mobileIcon.svg';
+import {useTheme} from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 function Home() {
+
+    const theme = useTheme();
+    const matchesSmDevice = useMediaQuery(theme.breakpoints.down('sm'));
 
     const defaultOptions = {
         loop: true,
@@ -52,11 +58,11 @@ function Home() {
                     </Grid>
                 </Grid>
                 {/**
-                 * Services Block
+                 * Custom Software Development
                  **/}
                  <Grid item>
-                     <Grid container direction={'row'} className={styles.serviceContainer}>
-                         <Grid item className={styles.serviceTextContainer}>
+                     <Grid container direction={'row'} className={styles.serviceContainer} justifyContent={matchesSmDevice ? 'center' : undefined}>
+                         <Grid item className={styles.leftServiceTextContainer}>
                              <Typography variant={'h4'} className={styles.heading4}>
                                  Custom Software Development
                              </Typography>
@@ -72,10 +78,35 @@ function Home() {
                              </Button>
                          </Grid>
                          <Grid item>
-                             <img src={customSoftwareIcon} alt="custom software icon" className={styles.serviceIcon}/>
+                             <img src={customSoftwareIcon} alt="custom software icon" className={styles.rightServiceIcon}/>
                          </Grid>
                      </Grid>
                  </Grid>
+                {/**
+                 * Mobile Development
+                 **/}
+                <Grid item>
+                    <Grid container direction={'row'} className={styles.serviceContainer} justifyContent={matchesSmDevice ? 'center' : 'flex-end'}>
+                        <Grid item className={styles.rightServiceTextContainer}>
+                            <Typography variant={'h4'} className={styles.heading4}>
+                                Mobile App Development
+                            </Typography>
+                            <Typography variant={'subtitle1'} className={styles.subtitle1}>
+                                Extend Functionality. Extend Access. Increase Engagement.
+                            </Typography>
+                            <Typography variant={'subtitle1'} className={styles.subtitle1}>
+                                Integrate your web experience or create a standalone app {!matchesSmDevice && <br/>}with either mobile platform.
+                            </Typography>
+                            <Button variant={'outlined'} className={styles.learnBtn}>
+                                <span style={{marginRight: 10}}>Learn More</span>
+                                <ButtonArrow width={10} height={10} fill={'#0B72B9'}/>
+                            </Button>
+                        </Grid>
+                        <Grid item>
+                            <img src={mobileAppsIcon} alt="mobile phone icon" className={styles.leftServiceIcon}/>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Grid>
     )
 }
