@@ -8,7 +8,7 @@
 
 .subtitle2 {
     color: white;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 300;
 }
 
@@ -22,4 +22,31 @@
     color: #0B72B9;
     font-size: 0.7rem;
     height: 35px;
+}
+
+.background {
+    background-image: url("../../../assets/background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1450px) {
+    .background {
+        background-image: url("../../../assets/mobileBackground.jpg");
+        background-attachment: inherit;
+    }
+}
+
+.estimateBtn {
+    border-radius: 50px;
+    font-family: Pacifico;
+    text-transform: none;
+    font-size: 1rem;
+    color: white;
+    height: 45px;
+    width: 145px;
 }

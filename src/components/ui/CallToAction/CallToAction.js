@@ -11,11 +11,11 @@ import React from 'react';
 function CallToAction() {
 
     const theme = useTheme();
-    const matchesSmDevice = useMediaQuery(theme.breakpoints.down('sm'));
+    const matchesMdDevice = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
-        <Grid container>
-            <Grid item>
+        <Grid container style={{height: '50em'}} alignItems={'center'} justifyContent={matchesMdDevice ? 'center' : 'space-between'} className={styles.background} direction={matchesMdDevice ? 'column' : 'row'}>
+            <Grid item style={{marginLeft: matchesMdDevice ? '0' : '5em'}}>
                 <Grid container direction={'column'}>
                     <Grid item>
                         <Typography variant={'h2'} className={styles.heading2}>Simple Software. <br/> Revolutionary Results.</Typography>
@@ -28,6 +28,9 @@ function CallToAction() {
                         </Grid>
                     </Grid>
                 </Grid>
+            </Grid>
+            <Grid item style={{marginRight: matchesMdDevice ? '0' : '5em', marginTop: matchesMdDevice ? '5em' : '0'}}>
+                <Button variant={'contained'} className={styles.estimateBtn} color={'secondary'}>Free Estimate</Button>
             </Grid>
         </Grid>
     )
