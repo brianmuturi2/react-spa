@@ -15,6 +15,7 @@ import mobileAppsIcon from '../../assets/mobileIcon.svg';
 import websiteIcon from '../../assets/websiteIcon.svg';
 import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import CallToAction from '../../components/ui/CallToAction/CallToAction';
 
 function Home() {
 
@@ -136,6 +137,9 @@ function Home() {
                         </Grid>
                     </Grid>
                 </Grid>
+                {/**
+                 * Revolution Section
+                 **/}
                 <Grid item>
                     <Grid container alignItems={'center'} justifyContent={'center'} style={{height: '50em'}} className={styles.serviceContainer}>
                         <Card className={styles.revolutionCard}>
@@ -159,6 +163,9 @@ function Home() {
                         <div className={styles.revolutionBackground}/>
                     </Grid>
                 </Grid>
+                {/**
+                 * Information Section
+                 **/}
                 <Grid item>
                     <Grid container direction={'row'} style={{height: '50em'}} alignItems={'center'}>
                         <Grid item container style={{position: 'absolute', textAlign: matchesSmDevice ? 'center' : 'inherit'}} direction={matchesSmDevice ? 'column' : 'row'} spacing={matchesSmDevice ? 10 : 0}>
@@ -190,6 +197,7 @@ function Home() {
                         <div className={styles.infoBackground}/>
                     </Grid>
                 </Grid>
+                <CallToAction/>
             </Grid>
     )
 }

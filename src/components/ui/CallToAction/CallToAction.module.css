@@ -1,0 +1,25 @@
+.heading2 {
+    font-family: Raleway;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    color: #0B72B9;
+}
+
+.subtitle2 {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.learnBtn {
+    border-color: #0B72B9;
+    border-width: 2px;
+    text-transform: none;
+    border-radius: 50px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: #0B72B9;
+    font-size: 0.7rem;
+    height: 35px;
+}
