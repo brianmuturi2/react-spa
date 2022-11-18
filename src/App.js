@@ -48,7 +48,7 @@ function App() {
               <Header selectedTab={tabValue} setSelectedTab={setTab} selectedMenu={selectedMenuIndex} setSelectedMenu={setMenuItem}/>
               <Toolbar sx={{marginBottom: '1em'}}/>
               <Routes>
-                  <Route exact path={'/'} element={<Home/>}/>
+                  <Route exact path={'/'} element={<Home setSelectedTab={setTab}/>}/>
                   <Route exact path={'/services'} element={<Services/>}/>
                   <Route exact path={'/custom-software'} element={<CustomSoftware/>}/>
                   <Route exact path={'/mobile-apps'} element={<MobileApps/>}/>
@@ -58,7 +58,7 @@ function App() {
                   <Route exact path={'/contact'} element={<Contact/>}/>
                   <Route exact path={'/estimate'} element={<Estimate/>}/>
               </Routes>
-              <Footer selectedTab={tabValue} setSelectedTab={setTab} selectedMenu={selectedMenuIndex} setSelectedMenu={setMenuItem}/>
+              <Footer setSelectedTab={setTab} setSelectedMenu={setMenuItem}/>
               </StyledEngineProvider>
           </BrowserRouter>
 

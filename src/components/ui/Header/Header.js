@@ -57,7 +57,7 @@ function Header({selectedTab, setSelectedTab, selectedMenu, setSelectedMenu}) {
      * TABS
      * */
 
-    const handleTabChange = (event, newValue) => {
+    const handleTabChange = (newValue) => {
         if (selectedTab === 1) {
             setSelectedMenu(null);
         }
@@ -151,19 +151,19 @@ function Header({selectedTab, setSelectedTab, selectedMenu, setSelectedMenu}) {
 
     const tabs = (
         <>
-            <Tabs aria-label="navigation tabs" value={selectedTab} onChange={handleTabChange} textColor="secondary" indicatorColor="primary" className={styles.tabContainer}>
-                <Tab label="Home" {...a11yProps(0)} className={styles.tab} component={Link} to={'/'}/>
+            <Tabs aria-label="navigation tabs" value={selectedTab === 'reset' ? false : selectedTab} textColor="secondary" indicatorColor="primary" className={styles.tabContainer}>
+                <Tab label="Home" {...a11yProps(0)} className={styles.tab} component={Link} to={'/'} onClick={handleTabChange.bind(this, 0)}/>
                 <Tab label="Services" {...a11yProps(1)} className={styles.tab}
                      id="services-button"
                      aria-controls={menuOpen ? 'services-menu' : undefined}
                      aria-haspopup="true"
                      aria-expanded={menuOpen ? 'true' : undefined}
                      onMouseOver={handleMenuClick}/>
-                <Tab label="The Revolution" {...a11yProps(2)} className={styles.tab} component={Link} to={'revolution'}/>
-                <Tab label="About Us" {...a11yProps(3)} className={styles.tab} component={Link} to={'about'} />
-                <Tab label="Contact Us" {...a11yProps(4)} className={styles.tab} component={Link} to={'contact'}/>
+                <Tab label="The Revolution" {...a11yProps(2)} className={styles.tab} component={Link} to={'revolution'} onClick={handleTabChange.bind(this, 2)}/>
+                <Tab label="About Us" {...a11yProps(3)} className={styles.tab} component={Link} to={'about'} onClick={handleTabChange.bind(this, 3)}/>
+                <Tab label="Contact Us" {...a11yProps(4)} className={styles.tab} component={Link} to={'contact'} onClick={handleTabChange.bind(this, 4)}/>
             </Tabs>
-            <Button variant="contained" color={'secondary'} className={styles.estimateBtn} component={Link} to={'estimate'}>Free Estimate</Button>
+            <Button variant="contained" color={'secondary'} className={styles.estimateBtn} component={Link} to={'estimate'} onClick={handleTabChange.bind(this, false)}>Free Estimate</Button>
             <Menu
                 id="services-menu"
                 anchorEl={menuAnchorEl}

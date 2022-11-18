@@ -7,6 +7,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Button from '@mui/material/Button';
 import ButtonArrow from '../ButtonArrow/ButtonArrow';
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function CallToAction() {
 
@@ -21,7 +22,7 @@ function CallToAction() {
                         <Typography variant={'h2'} className={styles.heading2}>Simple Software. <br/> Revolutionary Results.</Typography>
                         <Typography variant={'subtitle2'} className={styles.subtitle2}>Take advantage of the 21st century.</Typography>
                         <Grid container item>
-                            <Button variant={'outlined'} className={styles.learnBtn}>
+                            <Button variant={'outlined'} className={styles.learnBtn} component={Link} to={'revolution'}>
                                 <span style={{marginRight: 5}}>Learn More</span>
                                 <ButtonArrow width={10} height={10} fill={'#0B72B9'}/>
                             </Button>
@@ -30,7 +31,7 @@ function CallToAction() {
                 </Grid>
             </Grid>
             <Grid item style={{marginRight: matchesMdDevice ? '0' : '5em', marginTop: matchesMdDevice ? '5em' : '0'}}>
-                <Button variant={'contained'} className={styles.estimateBtn} color={'secondary'}>Free Estimate</Button>
+                <Button variant={'contained'} className={styles.estimateBtn} color={'secondary'} component={Link} to={'estimate'}>Free Estimate</Button>
             </Grid>
         </Grid>
     )
