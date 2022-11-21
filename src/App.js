@@ -49,14 +49,14 @@ function App() {
               <Toolbar sx={{marginBottom: '1em'}}/>
               <Routes>
                   <Route exact path={'/'} element={<Home setSelectedTab={setTab}/>}/>
-                  <Route exact path={'/services'} element={<Services/>}/>
-                  <Route exact path={'/custom-software'} element={<CustomSoftware/>}/>
-                  <Route exact path={'/mobile-apps'} element={<MobileApps/>}/>
-                  <Route exact path={'/websites'} element={<Websites/>}/>
-                  <Route exact path={'/revolution'} element={<Revolution/>}/>
-                  <Route exact path={'/about'} element={<About/>}/>
-                  <Route exact path={'/contact'} element={<Contact/>}/>
-                  <Route exact path={'/estimate'} element={<Estimate/>}/>
+                  <Route exact path={'/services'} element={<Services setSelectedTab={setTab}/>}/>
+                  <Route exact path={'/custom-software'} element={<CustomSoftware setSelectedTab={setTab}/>}/>
+                  <Route exact path={'/mobile-apps'} element={<MobileApps setSelectedTab={setTab}/>}/>
+                  <Route exact path={'/websites'} element={<Websites setSelectedTab={setTab}/>}/>
+                  <Route exact path={'/revolution'} element={<Revolution setSelectedTab={setTab}/>}/>
+                  <Route exact path={'/about'} element={<About setSelectedTab={setTab}/>}/>
+                  <Route exact path={'/contact'} element={<Contact setSelectedTab={setTab}/>}/>
+                  <Route exact path={'/estimate'} element={<Estimate setSelectedTab={setTab}/>}/>
               </Routes>
               <Footer setSelectedTab={setTab} setSelectedMenu={setMenuItem}/>
               </StyledEngineProvider>
