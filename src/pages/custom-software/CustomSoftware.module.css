@@ -1,0 +1,47 @@
+.heading2 {
+    font-family: Raleway;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    color: #0B72B9;
+}
+
+.heading4 {
+    font-family: Raleway;
+    font-size: 1.75rem;
+    color: #0B72B9;
+    font-weight: 700;
+}
+
+.body1 {
+    font-size: 1.25rem;
+    color: #868686;
+    font-weight: 300;
+}
+
+.mainContainer {
+    padding: 2em 5em 10em;
+}
+
+.heading {
+    max-width: 40em;
+}
+
+.leftArrowContainer {
+    margin-top: 0.5em;
+    margin-right: 1em;
+    margin-left: -3.5em;
+}
+
+.rightArrowContainer {
+    margin-top: 0.5em;
+}
+
+.saveContainer {
+    margin-top: 10em;
+    margin-bottom: 10em;
+}
+
+.saveItem {
+    max-width: 40em;
+}
