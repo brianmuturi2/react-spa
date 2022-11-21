@@ -35,11 +35,19 @@
     margin-top: 0.5em;
 }
 
-.saveContainer {
+.rowContainer {
     margin-top: 15em;
-    margin-bottom: 15em;
 }
 
 .saveItem {
     max-width: 40em;
+}
+
+.animationRowContainer {
+    margin-top: 5em;
+}
+
+.rootCauseContainer {
+    text-align: center;
+    margin-top: 15em;
 }
