@@ -23,23 +23,21 @@
     padding: 2em 5em 10em;
 }
 
-.heading {
-    max-width: 40em;
+.widthContainer {
+    max-width: 60em;
 }
 
-.leftArrowContainer {
+.arrowContainer {
     margin-top: 0.5em;
-    margin-right: 1em;
-    margin-left: -3.5em;
 }
 
-.rightArrowContainer {
+.arrowContainer {
     margin-top: 0.5em;
 }
 
 .saveContainer {
-    margin-top: 10em;
-    margin-bottom: 10em;
+    margin-top: 15em;
+    margin-bottom: 15em;
 }
 
 .saveItem {
