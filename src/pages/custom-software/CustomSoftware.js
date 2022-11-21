@@ -85,7 +85,7 @@ function CustomSoftware() {
                             Whether we're replacing old software or inventing new solutions, Arc Development is here to help your business tackle technology.
                         </Typography>
                         <Typography variant={'body1'} paragraph className={styles.body1}>
-                            Using regular commercial software leaves you with a lot of stuff you don't need, without some of the stuff you do need, adn ultimately controls the way you work.
+                            Using regular commercial software leaves you with a lot of stuff you don't need, without some of the stuff you do need, and ultimately controls the way you work.
                             Without using any software at all you risk falling behind competitors and missing out on huge savings from increased efficiency.
                         </Typography>
                         <Typography variant={'body1'} paragraph className={styles.body1}>
@@ -173,7 +173,7 @@ function CustomSoftware() {
             <Grid item container direction={'row'} className={styles.rootCauseContainer}>
                 <Grid item container direction={'column'}>
                     <Grid item>
-                        <img src={roots} alt="tree with roots extending out" height={'450em'} width={'450em'}/>
+                        <img src={roots} alt="tree with roots extending out" height={'450em'} width={'450em'} className={styles.rootImg}/>
                     </Grid>
                     <Grid item>
                         <Typography variant={'h4'} className={styles.heading4} gutterBottom>Root-Cause Analysis</Typography>
@@ -208,7 +208,7 @@ function CustomSoftware() {
                         <Lottie options={automationOptions} style={{maxHeight: 290, maxWidth: 280}}/>
                     </Grid>
                 </Grid>
-                <Grid item container alignItems={'center'} className={styles.animationRowContainer}>
+                <Grid item container alignItems={'center'} className={`${styles.animationRowContainer} ${styles.automationRowContainer}`}>
                     {!matchesMdDevice && <Grid item md>
                         <Lottie options={uedOptions} style={{maxHeight: 310, maxWidth: 155}}/>
                     </Grid>}
