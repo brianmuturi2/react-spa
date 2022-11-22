@@ -20,7 +20,13 @@
 }
 
 .mainContainer {
-    padding: 2em 5em 10em;
+    padding: 2em 5em;
+}
+
+@media only screen and (max-width: 900px) {
+    .mainContainer {
+        padding: 2em 3em;
+    }
 }
 
 .widthContainer {
@@ -32,38 +38,29 @@
 }
 
 .rowContainer {
-    margin-top: 15em;
-}
-
-.saveItem {
-    max-width: 40em;
-}
-
-.animationRowContainer {
-    margin-top: 5em;
-}
-
-.rootCauseContainer {
-    text-align: center;
-    margin-top: 15em;
-}
-
-.automationRowContainer {
     margin-bottom: 15em;
 }
 
+.iconTextItem {
+    max-width: 40em;
+}
+
 @media only screen and (max-width: 900px) {
-    .saveItem:not(:first-child) {
+    .iconTextItem:not(:first-child) {
         margin-top: 5em;
     }
 }
 
+.imgIcons {
+    max-width: 28em;
+}
+
 @media only screen and (max-width: 600px) {
-    .rootImg {
-        height: 12em;
-        width: 12em;
+    .imgIcons {
+        max-width: 20em;
     }
-    .rootCauseContainer {
-        text-align: inherit;
+
+    .textIconContainer {
+        text-align: center;
     }
 }

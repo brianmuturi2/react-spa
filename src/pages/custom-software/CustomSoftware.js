@@ -22,7 +22,7 @@ import automationAnimation from '../../animations/automationAnimation/data';
 import uedAnimation from '../../animations/uxAnimation/data';
 import roots from '../../assets/root.svg';
 
-function CustomSoftware() {
+function CustomSoftware({setSelectedMenu}) {
 
     const theme = useTheme();
     const matchesMdDevice = useMediaQuery(theme.breakpoints.down('md'));
@@ -63,6 +63,10 @@ function CustomSoftware() {
         }
     };
 
+    function setServiceMenu(i) {
+        setSelectedMenu(i);
+    }
+
     return (
         <Grid container direction={'column'} className={styles.mainContainer}>
             <Grid item container direction={'row'} justifyContent={'space-between'}>
@@ -72,7 +76,7 @@ function CustomSoftware() {
                     </IconButton>
                 </Grid>
                 {matchesMdDevice && <Grid item className={styles.arrowContainer}>
-                    <IconButton component={Link} to={'/mobile-apps'}>
+                    <IconButton component={Link} to={'/mobile-apps'} onClick={setServiceMenu.bind(this, 2)}>
                         <img src={forwardArrow} alt="Forward to Mobile App Development"/>
                     </IconButton>
                 </Grid>}
@@ -98,7 +102,7 @@ function CustomSoftware() {
                     </Grid>
                 </Grid>
                 {!matchesMdDevice && <Grid item className={styles.arrowContainer}>
-                    <IconButton component={Link} to={'/mobile-apps'}>
+                    <IconButton component={Link} to={'/mobile-apps'} onClick={setServiceMenu.bind(this, 2)}>
                         <img src={forwardArrow} alt="Forward to Mobile App Development"/>
                     </IconButton>
                 </Grid>}

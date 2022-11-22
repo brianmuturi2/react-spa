@@ -50,9 +50,9 @@ function App() {
               <Routes>
                   <Route exact path={'/'} element={<Home setSelectedTab={setTab}/>}/>
                   <Route exact path={'/services'} element={<Services setSelectedTab={setTab}/>}/>
-                  <Route exact path={'/custom-software'} element={<CustomSoftware setSelectedTab={setTab}/>}/>
-                  <Route exact path={'/mobile-apps'} element={<MobileApps setSelectedTab={setTab}/>}/>
-                  <Route exact path={'/websites'} element={<Websites setSelectedTab={setTab}/>}/>
+                  <Route exact path={'/custom-software'} element={<CustomSoftware setSelectedTab={setTab} setSelectedMenu={setMenuItem}/>}/>
+                  <Route exact path={'/mobile-apps'} element={<MobileApps setSelectedTab={setTab} setSelectedMenu={setMenuItem}/>}/>
+                  <Route exact path={'/websites'} element={<Websites setSelectedTab={setTab} setSelectedMenu={setMenuItem}/>}/>
                   <Route exact path={'/revolution'} element={<Revolution setSelectedTab={setTab}/>}/>
                   <Route exact path={'/about'} element={<About setSelectedTab={setTab}/>}/>
                   <Route exact path={'/contact'} element={<Contact setSelectedTab={setTab}/>}/>
