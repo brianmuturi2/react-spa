@@ -40,12 +40,12 @@ function MobileApps({setSelectedMenu}) {
             <Grid item container direction={'row'} justifyContent={'space-between'} className={styles.rowContainer}>
                 <Grid item className={styles.arrowContainer}>
                     <IconButton component={Link} to={'/custom-software'} onClick={setServiceMenu.bind(this, 1)}>
-                        <img src={backArrow} alt="Back to Services Page"/>
+                        <img src={backArrow} alt="Back to Custom Software Development Page"/>
                     </IconButton>
                 </Grid>
                 {matchesMdDevice && <Grid item className={styles.arrowContainer}>
                     <IconButton component={Link} to={'/websites'} onClick={setServiceMenu.bind(this, 3)}>
-                        <img src={forwardArrow} alt="Forward to Mobile App Development"/>
+                        <img src={forwardArrow} alt="Forward to Website Development"/>
                     </IconButton>
                 </Grid>}
                 <Grid item container direction={'column'} className={styles.widthContainer}>
@@ -66,7 +66,7 @@ function MobileApps({setSelectedMenu}) {
                 </Grid>
                 {!matchesMdDevice && <Grid item className={styles.arrowContainer}>
                     <IconButton component={Link} to={'/websites'} onClick={setServiceMenu.bind(this, 3)}>
-                        <img src={forwardArrow} alt="Forward to Mobile App Development"/>
+                        <img src={forwardArrow} alt="Forward to Website Development"/>
                     </IconButton>
                 </Grid>}
             </Grid>

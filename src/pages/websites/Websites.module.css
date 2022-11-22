@@ -41,35 +41,17 @@
     margin-top: 15em;
 }
 
-.saveItem {
-    max-width: 40em;
-}
-
-.animationRowContainer {
-    margin-top: 5em;
-}
-
-.rootCauseContainer {
-    text-align: center;
-    margin-top: 15em;
-}
-
-.automationRowContainer {
+.lastRowContainer {
     margin-bottom: 15em;
 }
 
-@media only screen and (max-width: 900px) {
-    .saveItem:not(:first-child) {
-        margin-top: 5em;
-    }
+.rowTextBody {
+    max-width: 30em;
+    margin-left: 2em;
 }
 
-@media only screen and (max-width: 600px) {
-    .rootImg {
-        height: 12em;
-        width: 12em;
-    }
-    .rootCauseContainer {
-        text-align: inherit;
+@media only screen and (max-width: 900px) {
+    .iconImgs {
+        margin: .5em 0;
     }
 }
