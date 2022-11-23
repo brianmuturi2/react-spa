@@ -1,0 +1,51 @@
+.headingMain {
+    font-family: Pacifico;
+    /*    font-weight: 700;*/
+    font-size: 2.5rem;
+    line-height: 1.5;
+    color: #0B72B9;
+}
+
+.heading2 {
+    font-family: Raleway;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    color: #0B72B9;
+}
+
+.heading4 {
+    font-family: Raleway;
+    font-size: 1.75rem;
+    color: #0B72B9;
+    font-weight: 700;
+}
+
+.body1 {
+    font-size: 1.25rem;
+    color: #868686;
+    font-weight: 300;
+}
+
+.mainContainer {
+    padding: 2em 5em;
+}
+
+@media only screen and (max-width: 900px) {
+    .mainContainer {
+        padding: 2em 3em;
+    }
+}
+
+.widthContainer {
+    max-width: 80em;
+}
+
+.rowContainer {
+    margin-top: 2em;
+    margin-bottom: 10em;
+}
+
+.bookIcon {
+    max-width: 25em;
+}
