@@ -3,30 +3,43 @@ import Lottie from 'react-lottie';
 
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-
-import styles from './Revolution.module.css';
 import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+
+import styles from './Revolution.module.css';
+import vision from '../../assets/vision.svg';
+import technologyAnimation from '../../animations/technologyAnimation/data';
+import consultation from '../../assets/consultationIcon.svg'
 
 function Revolution() {
 
     const theme = useTheme();
     const matchesMdDevice = useMediaQuery(theme.breakpoints.down('md'));
 
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: technologyAnimation,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+    };
+
     return (
+        <>
         <Grid container direction={'column'} className={styles.mainContainer}>
             <Grid item container>
                 <Grid item>
                     <Typography variant={'h2'} className={styles.headingMain}>The Revolution</Typography>
                 </Grid>
             </Grid>
-            <Grid item container className={styles.rowContainer}>
+            <Grid item container className={styles.rowContainer} alignItems={matchesMdDevice ? 'inherit' : 'center'}>
                 <Grid item md>
-                    <img src={''} alt="Binoculars viewing mountain"/>
+                    <img src={vision} alt="Mountain through binoculars" className={styles.iconImg}/>
                 </Grid>
                 <Grid item container direction={'column'} className={styles.widthContainer} md>
                     <Grid item>
-                        <Typography variant={'h4'} className={styles.heading4}>Vision</Typography>
+                        <Typography variant={'h4'} className={styles.heading4} gutterBottom>Vision</Typography>
                     </Grid>
                     <Grid item>
                         <Typography variant={'body1'} paragraph className={styles.body1}>
@@ -47,10 +60,10 @@ function Revolution() {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item container className={styles.rowContainer}>
+            <Grid item container className={styles.rowContainer} alignItems={matchesMdDevice ? 'inherit' : 'center'}>
                 <Grid item container direction={'column'} className={styles.widthContainer} md>
                     <Grid item>
-                        <Typography variant={'h4'} className={styles.heading4}>Technology</Typography>
+                        <Typography variant={'h4'} className={styles.heading4} gutterBottom>Technology</Typography>
                     </Grid>
                     <Grid item>
                         <Typography variant={'body1'} paragraph className={styles.body1}>
@@ -74,38 +87,39 @@ function Revolution() {
                     </Grid>
                 </Grid>
                 <Grid item md>
-                    <img src={''} alt="Hammer"/>
-                </Grid>
-            </Grid>
-            <Grid item container className={styles.rowContainer} direction={'column'}>
-                <Grid item alignSelf={matchesMdDevice ? 'center' : 'inherit'} className={styles.consultationBackground}>
-                    <Typography variant={'h4'} className={styles.heading4}>Process</Typography>
-                </Grid>
-                <Grid item container alignItems={'center'}>
-                    <Grid item container direction={'column'} className={styles.widthContainer} md>
-                        <Grid item>
-                            <Typography variant={'h4'} className={styles.heading4}>Consultation</Typography>
-                        </Grid>
-                        <Grid item container>
-                            <Grid item>
-                                <Typography variant={'body1'} paragraph className={styles.body1}>
-                                    Our process begins the moment you realize you need a piece of technology for your business. Whether you already have an idea for where to start and what to do, or if you just know you want to step things up, our initial consultation will help you examine your business holistically to find the best solutions.
-                                </Typography>
-                                <Typography variant={'body1'} paragraph className={styles.body1}>
-                                    Detailed notes will be taken on your requirements and constraints, while taking cate to identify areas for consideration.
-                                </Typography>
-                                <Typography variant={'body1'} paragraph className={styles.body1}>
-                                    Cutting-edge advancements in machine learning like object detection and natural language processing allow computers to do things previously unimaginable, and our expertise and solution will help usher you into this new future of possibilities.
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid item md>
-                        <img src={''} alt="Hammer"/>
-                    </Grid>
+                    <Lottie options={defaultOptions} width={matchesMdDevice ? '20em' : '30em'}/>
                 </Grid>
             </Grid>
         </Grid>
+        <Grid container className={`${styles.rowContainer} ${styles.lastRow} ${styles.consultationBackground}`} direction={'column'}>
+        <Grid item alignSelf={matchesMdDevice ? 'inherit' : 'center'}>
+            <Typography variant={'h4'} className={styles.heading4}>Process</Typography>
+        </Grid>
+        <Grid item container alignItems={'center'} className={styles.consultationContainer}>
+            <Grid item container direction={'column'} className={styles.widthContainer} md>
+                <Grid item>
+                    <Typography variant={'h4'} className={styles.consultationHeading} gutterBottom>Consultation</Typography>
+                </Grid>
+                <Grid item container>
+                    <Grid item>
+                        <Typography variant={'body1'} paragraph>
+                            Our process begins the moment you realize you need a piece of technology for your business. Whether you already have an idea for where to start and what to do, or if you just know you want to step things up, our initial consultation will help you examine your business holistically to find the best solutions.
+                        </Typography>
+                        <Typography variant={'body1'} paragraph>
+                            Detailed notes will be taken on your requirements and constraints, while taking cate to identify areas for consideration.
+                        </Typography>
+                        <Typography variant={'body1'} paragraph>
+                            Cutting-edge advancements in machine learning like object detection and natural language processing allow computers to do things previously unimaginable, and our expertise and solution will help usher you into this new future of possibilities.
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid item md>
+                <img src={consultation} alt="handshake" style={{marginLeft: matchesMdDevice ? 0 : '3em' }} className={styles.processIconImg}/>
+            </Grid>
+        </Grid>
+    </Grid>
+        </>
     )
 }
 

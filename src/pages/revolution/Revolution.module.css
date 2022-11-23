@@ -45,6 +45,52 @@
     margin-top: 15em;
 }
 
-.consultationBackground {
+.iconImg {
+    max-width: 40em;
+    margin-right: 5em;
+}
 
+.processIconImg {
+    max-width: 30em;
+}
+
+@media only screen and (max-width: 900px) {
+    .iconImg {
+        max-width: 30em;
+        margin-right: 5em;
+    }
+
+    .processIconImg {
+        max-width: 20em;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .iconImg {
+        max-width: 20em;
+        margin-right: 0;
+    }
+
+    .processIconImg {
+        max-width: 15em;
+    }
+}
+
+.consultationBackground {
+    background-color: #B3B3B3;
+}
+
+.consultationContainer {
+    margin-top: 5em;
+}
+
+.consultationHeading {
+    font-family: Raleway;
+    font-size: 1.5rem;
+    color: #000;
+    font-weight: 700;
+}
+
+.lastRow {
+    padding: 5em 5em 15em;
 }
