@@ -54,6 +54,18 @@
     max-width: 30em;
 }
 
+.reviewIconImg {
+    max-width: 15em;
+}
+
+.launchIconImg {
+    max-height: 25em;
+}
+
+.maintainIconImg {
+    max-height: 20em;
+}
+
 @media only screen and (max-width: 900px) {
     .iconImg {
         max-width: 30em;
@@ -62,6 +74,10 @@
 
     .processIconImg {
         max-width: 20em;
+    }
+
+    .reviewIconImg {
+        max-width: 12em;
     }
 }
 
@@ -74,13 +90,21 @@
     .processIconImg {
         max-width: 15em;
     }
+
+    .reviewIconImg {
+        max-width: 9em;
+    }
+}
+
+.processHeading {
+    margin-bottom: 5em;
 }
 
 .consultationBackground {
     background-color: #B3B3B3;
 }
 
-.consultationContainer {
+.processContainer {
     margin-top: 5em;
 }
 
@@ -91,6 +115,39 @@
     font-weight: 700;
 }
 
-.lastRow {
+.processRow {
+    padding: 5em 5em 5em;
+}
+
+
+.mockupBackground {
+    background-color: #FF7373;
+}
+
+.reviewBackground {
+    background-color: #39B54A;
+}
+
+.designBackground {
+    background-color: #A67C52;
+}
+
+.buildBackground {
+    background-color: #FBB03B;
+}
+
+.launchBackground {
+    background-color: #C1272D;
+}
+
+.maintainBackground {
+    background-color: #8E45CE;
+}
+
+.iterateBackground {
+    background-color: #29ABE2;
+}
+
+.iterateRow {
     padding: 5em 5em 15em;
 }
