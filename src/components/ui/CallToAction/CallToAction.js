@@ -9,13 +9,13 @@ import ButtonArrow from '../ButtonArrow/ButtonArrow';
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-function CallToAction() {
+function CallToAction({fixedBackground}) {
 
     const theme = useTheme();
     const matchesMdDevice = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
-        <Grid container style={{height: '50em'}} alignItems={'center'} justifyContent={matchesMdDevice ? 'center' : 'space-between'} className={styles.background} direction={matchesMdDevice ? 'column' : 'row'}>
+        <Grid container style={{height: '50em'}} alignItems={'center'} justifyContent={matchesMdDevice ? 'center' : 'space-between'} className={`${styles.background} ${fixedBackground ? styles.fixedBackground : ''}`} direction={matchesMdDevice ? 'column' : 'row'}>
             <Grid item style={{marginLeft: matchesMdDevice ? '0' : '5em'}}>
                 <Grid container direction={'column'}>
                     <Grid item>

@@ -1,0 +1,61 @@
+.heading2 {
+    font-family: Raleway;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    color: #0B72B9;
+}
+
+.heading3 {
+    font-family: Pacifico;
+    font-size: 2.5rem;
+    color: #0B72B9;
+}
+
+.heading4 {
+    font-family: Raleway;
+    font-size: 1.75rem;
+    color: #0B72B9;
+    font-weight: 700;
+}
+
+.subtitle1 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #0B72B9;
+    margin-bottom: 1em;
+}
+
+.contactText {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #0B72B9;
+    margin-left: .25em;
+}
+
+.contactContainer {
+
+}
+
+.contactTextContainer {
+    padding: 3em 5em;
+}
+
+.contactFormContainer {
+    margin: 2em 0;
+}
+
+.formInput {
+    margin-top: 1.5em;
+}
+
+.submitBtn {
+    border-radius: 50px;
+    margin-right: 40px;
+    font-family: Pacifico;
+    text-transform: none;
+    font-size: 1rem;
+    color: white;
+    height: 45px;
+    width: 145px;
+}

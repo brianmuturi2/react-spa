@@ -50,3 +50,7 @@
     height: 45px;
     width: 145px;
 }
+
+.fixedBackground {
+    background-attachment: inherit;
+}
