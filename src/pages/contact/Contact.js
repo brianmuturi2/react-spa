@@ -136,7 +136,7 @@ export function ContactForm({dialog, title, onSubmit, data}) {
     }
 
     return (
-        <Grid item container direction={'column'} md={4} className={`${dialog ? '' : styles.contactTextContainer}`}>
+        <Grid item container direction={'column'} md={dialog ? 12 : 4} className={`${dialog ? '' : styles.contactTextContainer}`}>
             <Grid item>
                 <Typography variant={'h4'} className={styles.heading4}>{title}</Typography>
             </Grid>
