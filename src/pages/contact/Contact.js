@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -18,16 +18,24 @@ import Button from '@mui/material/Button';
 function Contact() {
 
     const [dialogOpen, setDialogOpen] = useState(false);
+    const [formData, setFormData] = useState();
 
     const theme = useTheme();
     const matchesMdDevice = useMediaQuery(theme.breakpoints.down('lg'));
 
-    function handleDialog() {
-        setDialogOpen(!dialogOpen);
+    function handleDialog(data) {
+        if (data) {
+            setFormData(data);
+            setDialogOpen(!dialogOpen);
+        }
     }
 
-    function submitForm(data) {
-
+    function submitForm(e) {
+        if (e === 'dismiss') {
+            setDialogOpen(!dialogOpen);
+        } else {
+            setDialogOpen(!dialogOpen);
+        }
     }
 
     return (
@@ -42,10 +50,10 @@ function Contact() {
                 fullWidth
                 maxWidth={'md'}
                 open={dialogOpen}
-                onClose={handleDialog}
+                onClose={submitForm}
             >
                 <DialogContent>
-                    <ContactForm onSubmit={submitForm} title={'Confirm Message'} dialog={true}/>
+                    <ContactForm onSubmit={submitForm} title={'Confirm Message'} dialog={true} data={formData}/>
                 </DialogContent>
             </Dialog>
         </>
@@ -56,13 +64,74 @@ export default Contact
 
 export function ContactForm({dialog, title, onSubmit, data}) {
 
-    let formData;
+    const [name, setName] = useState('');
+
+    const [phone, setPhone] = useState('');
+    const [phoneHelper, setPhoneHelper] = useState('');
+
+    const [email, setEmail] = useState('');
+    const [emailHelper, setEmailHelper] = useState('');
+
+    const [message, setMessage] = useState('');
+
+    useEffect(() => {
+        if (data) {
+            setName(data.name);
+            setPhone(data.phone);
+            setEmail(data.email);
+            setMessage(data.message);
+        }
+    }, [data]);
+
+    function handleInputChange(event) {
+        let valid;
+
+        switch (event.target.id) {
+            case 'name':
+                setName(event.target.value)
+                break;
+            case 'phone':
+                setPhone(event.target.value);
+
+                valid = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(event.target.value)
+
+                if (!valid) {
+                    setPhoneHelper('Please enter valid phone number');
+                } else {
+                    setPhoneHelper('');
+                }
+                break;
+            case 'email':
+                setEmail(event.target.value);
+
+                valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(event.target.value)
+
+                if (!valid) {
+                    setEmailHelper('Please enter valid email');
+                } else {
+                    setEmailHelper('');
+                }
+                break;
+            case 'message':
+                setMessage(event.target.value);
+                break;
+            default:
+                break;
+        }
+    }
+
+    const formData = {
+        name,
+        phone,
+        email,
+        message
+    };
 
     function handleSubmit() {
         if (!dialog) {
-            onSubmit()
-        } else {
             onSubmit(formData)
+        } else {
+            onSubmit()
         }
     }
 
@@ -100,48 +169,61 @@ export function ContactForm({dialog, title, onSubmit, data}) {
                 <Grid item>
                     <TextField
                         required
-                        id="outlined-required"
+                        id="name"
                         label="Name"
-                        defaultValue="John Doe"
+                        value={name}
                         size="small"
                         fullWidth
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item className={styles.formInput}>
                     <TextField
                         required
-                        id="outlined-required"
+                        helperText={phoneHelper}
+                        error={phoneHelper.length > 0}
+                        id="phone"
                         label="Phone Number"
-                        defaultValue="0726635116"
+                        value={phone}
                         size="small"
                         fullWidth
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item className={styles.formInput}>
                     <TextField
                         required
-                        id="outlined-required"
+                        helperText={emailHelper}
+                        error={emailHelper.length > 0}
+                        id="email"
                         label="Email"
-                        defaultValue="brianmuturi2@gmail.com"
+                        value={email}
                         size="small"
                         fullWidth
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item className={styles.formInput}>
                     <TextField
                         required
-                        id="outlined-required"
+                        id="message"
                         label="Message"
-                        defaultValue=""
+                        value={message}
                         size="small"
                         fullWidth
                         multiline
                         rows={4}
+                        onChange={handleInputChange}
                     />
                 </Grid>
             </Grid>
             <Grid item alignSelf={'center'}>
-                <Button variant={'contained'} color={'secondary'} className={styles.submitBtn} onClick={handleSubmit}>Send Message</Button>
+                <Button
+                    disabled={!name.length || !message.length || !!phoneHelper.length || !!emailHelper.length}
+                    variant={'contained'}
+                    color={'secondary'}
+                    className={styles.submitBtn}
+                    onClick={handleSubmit}>Send Message</Button>
             </Grid>
         </Grid>
     )
