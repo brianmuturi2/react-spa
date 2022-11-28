@@ -152,18 +152,18 @@ function Header({selectedTab, setSelectedTab, selectedMenu, setSelectedMenu}) {
     const tabs = (
         <>
             <Tabs aria-label="navigation tabs" value={selectedTab === 'reset' ? false : selectedTab} textColor="secondary" indicatorColor="primary" className={styles.tabContainer}>
-                <Tab label="Home" {...a11yProps(0)} className={styles.tab} component={Link} to={'/'} onClick={handleTabChange.bind(this, 0)}/>
+                <Tab label="Home" {...a11yProps(0)} className={styles.tab} component={Link} to='/' onClick={handleTabChange.bind(this, 0)}/>
                 <Tab label="Services" {...a11yProps(1)} className={styles.tab}
                      id="services-button"
                      aria-controls={menuOpen ? 'services-menu' : undefined}
                      aria-haspopup="true"
                      aria-expanded={menuOpen ? 'true' : undefined}
                      onMouseOver={handleMenuClick}/>
-                <Tab label="The Revolution" {...a11yProps(2)} className={styles.tab} component={Link} to={'revolution'} onClick={handleTabChange.bind(this, 2)}/>
-                <Tab label="About Us" {...a11yProps(3)} className={styles.tab} component={Link} to={'about'} onClick={handleTabChange.bind(this, 3)}/>
-                <Tab label="Contact Us" {...a11yProps(4)} className={styles.tab} component={Link} to={'contact'} onClick={handleTabChange.bind(this, 4)}/>
+                <Tab label="The Revolution" {...a11yProps(2)} className={styles.tab} component={Link} to='/revolution' onClick={handleTabChange.bind(this, 2)}/>
+                <Tab label="About Us" {...a11yProps(3)} className={styles.tab} component={Link} to='/about' onClick={handleTabChange.bind(this, 3)}/>
+                <Tab label="Contact Us" {...a11yProps(4)} className={styles.tab} component={Link} to='/contact' onClick={handleTabChange.bind(this, 4)}/>
             </Tabs>
-            <Button variant="contained" color={'secondary'} className={styles.estimateBtn} component={Link} to={'estimate'} onClick={handleTabChange.bind(this, false)}>Free Estimate</Button>
+            <Button variant="contained" color={'secondary'} className={styles.estimateBtn} component={Link} to='/estimate' onClick={handleTabChange.bind(this, false)}>Free Estimate</Button>
             <Menu
                 id="services-menu"
                 anchorEl={menuAnchorEl}
@@ -208,22 +208,22 @@ function Header({selectedTab, setSelectedTab, selectedMenu, setSelectedMenu}) {
                 onOpen={toggleDrawer}>
 
                 <List>
-                    <ListItem divider button component={Link} to={'/'} onClick={toggleDrawer}>
+                    <ListItem divider button component={Link} to='/' onClick={toggleDrawer}>
                         <ListItemText disableTypography>Home</ListItemText>
                     </ListItem>
-                    <ListItem divider button component={Link} to={'services'} onClick={toggleDrawer}>
+                    <ListItem divider button component={Link} to='/services' onClick={toggleDrawer}>
                         <ListItemText disableTypography>Services</ListItemText>
                     </ListItem>
-                    <ListItem divider button component={Link} to={'revolution'} onClick={toggleDrawer}>
+                    <ListItem divider button component={Link} to='/revolution' onClick={toggleDrawer}>
                         <ListItemText disableTypography>The Revolution</ListItemText>
                     </ListItem>
-                    <ListItem divider button component={Link} to={'about'} onClick={toggleDrawer}>
+                    <ListItem divider button component={Link} to='/about' onClick={toggleDrawer}>
                         <ListItemText disableTypography>About Us</ListItemText>
                     </ListItem>
-                    <ListItem divider button component={Link} to={'contact'} onClick={toggleDrawer}>
+                    <ListItem divider button component={Link} to='/contact' onClick={toggleDrawer}>
                         <ListItemText disableTypography>Contact Us</ListItemText>
                     </ListItem>
-                    <ListItem divider button component={Link} to={'estimate'} onClick={toggleDrawer}>
+                    <ListItem divider button component={Link} to='/estimate' onClick={toggleDrawer}>
                         <ListItemText disableTypography>Free Estimate</ListItemText>
                     </ListItem>
                 </List>

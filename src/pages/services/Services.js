@@ -40,7 +40,7 @@ function Services({setSelectedTab}) {
                         <Typography variant={'subtitle1'} className={styles.subtitle1}>
                             Complete digital solutions, from investigation to <span className={styles.orangeText}>celebration.</span>
                         </Typography>
-                        <Button variant={'outlined'} className={styles.learnBtn} component={Link} to={'custom-software'} onClick={handleNavigation.bind(this, 1)}>
+                        <Button variant={'outlined'} className={styles.learnBtn} component={Link} to='/custom-software' onClick={handleNavigation.bind(this, 1)}>
                             <span style={{marginRight: 10}}>Learn More</span>
                             <ButtonArrow width={10} height={10} fill={'#0B72B9'}/>
                         </Button>
@@ -65,7 +65,7 @@ function Services({setSelectedTab}) {
                         <Typography variant={'subtitle1'} className={styles.subtitle1}>
                             Integrate your web experience or create a standalone app {!matchesSmDevice && <br/>}with either mobile platform.
                         </Typography>
-                        <Button variant={'outlined'} className={styles.learnBtn} component={Link} to={'mobile-apps'} onClick={handleNavigation.bind(this, 1)}>
+                        <Button variant={'outlined'} className={styles.learnBtn} component={Link} to='/mobile-apps' onClick={handleNavigation.bind(this, 1)}>
                             <span style={{marginRight: 10}}>Learn More</span>
                             <ButtonArrow width={10} height={10} fill={'#0B72B9'}/>
                         </Button>
@@ -90,7 +90,7 @@ function Services({setSelectedTab}) {
                         <Typography variant={'subtitle1'} className={styles.subtitle1}>
                             Optimized for Search Engines, built for speed.
                         </Typography>
-                        <Button variant={'outlined'} className={styles.learnBtn} component={Link} to={'websites'} onClick={handleNavigation.bind(this, 1)}>
+                        <Button variant={'outlined'} className={styles.learnBtn} component={Link} to='/websites' onClick={handleNavigation.bind(this, 1)}>
                             <span style={{marginRight: 10}}>Learn More</span>
                             <ButtonArrow width={10} height={10} fill={'#0B72B9'}/>
                         </Button>

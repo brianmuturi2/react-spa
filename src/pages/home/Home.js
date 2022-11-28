@@ -50,10 +50,10 @@ function Home({setSelectedTab}) {
                             </Typography>
                             <Grid container justifyContent={'center'} className={styles.btnContainer}>
                                 <Grid item>
-                                    <Button variant={'contained'} color={'secondary'} className={styles.estimateBtn} component={Link} to={'estimate'} onClick={handleNavigation.bind(this, false)}>Free Estimate</Button>
+                                    <Button variant={'contained'} color={'secondary'} className={styles.estimateBtn} component={Link} to='/estimate' onClick={handleNavigation.bind(this, false)}>Free Estimate</Button>
                                 </Grid>
                                 <Grid item>
-                                    <Button variant={'outlined'} className={`${styles.learnBtn} ${styles.learnBtnHeader}`} component={Link} to={'revolution'} onClick={handleNavigation.bind(this, 2)}>
+                                    <Button variant={'outlined'} className={`${styles.learnBtn} ${styles.learnBtnHeader}`} component={Link} to='/revolution' onClick={handleNavigation.bind(this, 2)}>
                                         <span style={{marginRight: 10}}>Learn More</span>
                                         <ButtonArrow width={15} height={15} fill={'#0B72B9'}/>
                                     </Button>
@@ -82,7 +82,7 @@ function Home({setSelectedTab}) {
                              <Typography variant={'subtitle1'} className={styles.subtitle1}>
                                  Complete digital solutions, from investigation to <span className={styles.orangeText}>celebration.</span>
                              </Typography>
-                             <Button variant={'outlined'} className={styles.learnBtn} component={Link} to={'custom-software'} onClick={handleNavigation.bind(this, 1)}>
+                             <Button variant={'outlined'} className={styles.learnBtn} component={Link} to='/custom-software' onClick={handleNavigation.bind(this, 1)}>
                                  <span style={{marginRight: 10}}>Learn More</span>
                                  <ButtonArrow width={10} height={10} fill={'#0B72B9'}/>
                              </Button>
@@ -107,7 +107,7 @@ function Home({setSelectedTab}) {
                             <Typography variant={'subtitle1'} className={styles.subtitle1}>
                                 Integrate your web experience or create a standalone app {!matchesSmDevice && <br/>}with either mobile platform.
                             </Typography>
-                            <Button variant={'outlined'} className={styles.learnBtn} component={Link} to={'mobile-apps'} onClick={handleNavigation.bind(this, 1)}>
+                            <Button variant={'outlined'} className={styles.learnBtn} component={Link} to='/mobile-apps' onClick={handleNavigation.bind(this, 1)}>
                                 <span style={{marginRight: 10}}>Learn More</span>
                                 <ButtonArrow width={10} height={10} fill={'#0B72B9'}/>
                             </Button>
@@ -132,7 +132,7 @@ function Home({setSelectedTab}) {
                             <Typography variant={'subtitle1'} className={styles.subtitle1}>
                                 Optimized for Search Engines, built for speed.
                             </Typography>
-                            <Button variant={'outlined'} className={styles.learnBtn} component={Link} to={'websites'} onClick={handleNavigation.bind(this, 1)}>
+                            <Button variant={'outlined'} className={styles.learnBtn} component={Link} to='/websites' onClick={handleNavigation.bind(this, 1)}>
                                 <span style={{marginRight: 10}}>Learn More</span>
                                 <ButtonArrow width={10} height={10} fill={'#0B72B9'}/>
                             </Button>
@@ -157,7 +157,7 @@ function Home({setSelectedTab}) {
                                         <Typography variant={'subtitle1'} gutterBottom>
                                             Visionary insights coupled with cutting-edge technology is a recipe for revolution.
                                         </Typography>
-                                        <Button variant={'outlined'} className={`${styles.learnBtn} ${styles.learnBtnHeader}`} component={Link} to={'revolution'} onClick={handleNavigation.bind(this, 2)}>
+                                        <Button variant={'outlined'} className={`${styles.learnBtn} ${styles.learnBtnHeader}`} component={Link} to='/revolution' onClick={handleNavigation.bind(this, 2)}>
                                             <span style={{marginRight: 10}}>Learn More</span>
                                             <ButtonArrow width={15} height={15} fill={'#0B72B9'}/>
                                         </Button>
@@ -179,7 +179,7 @@ function Home({setSelectedTab}) {
                                     <Typography variant={'h2'} style={{color: 'white'}} className={styles.heading2}>About Us</Typography>
                                     <Typography variant={'subtitle2'} className={styles.subtitle2}>Let's get personal.</Typography>
                                     <Grid item>
-                                        <Button variant={'outlined'} className={styles.learnBtn} style={{color: 'white', borderColor: 'white'}} component={Link} to={'about'} onClick={handleNavigation.bind(this, 3)}>
+                                        <Button variant={'outlined'} className={styles.learnBtn} style={{color: 'white', borderColor: 'white'}} component={Link} to='/about' onClick={handleNavigation.bind(this, 3)}>
                                             <span style={{marginRight: 10}}>Learn More</span>
                                             <ButtonArrow width={10} height={10} fill={'white'}/>
                                         </Button>
@@ -191,7 +191,7 @@ function Home({setSelectedTab}) {
                                     <Typography variant={'h2'} style={{color: 'white'}} className={styles.heading2}>Contact Us</Typography>
                                     <Typography variant={'subtitle2'} className={styles.subtitle2}>Say hello! </Typography>
                                     <Grid item>
-                                        <Button variant={'outlined'} className={styles.learnBtn} style={{color: 'white', borderColor: 'white'}} component={Link} to={'contact'} onClick={handleNavigation.bind(this, 4)}>
+                                        <Button variant={'outlined'} className={styles.learnBtn} style={{color: 'white', borderColor: 'white'}} component={Link} to='/contact' onClick={handleNavigation.bind(this, 4)}>
                                             <span style={{marginRight: 10}}>Learn More</span>
                                             <ButtonArrow width={10} height={10} fill={'white'}/>
                                         </Button>

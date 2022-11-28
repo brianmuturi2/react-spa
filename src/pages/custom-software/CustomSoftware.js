@@ -71,12 +71,12 @@ function CustomSoftware({setSelectedMenu}) {
         <Grid container direction={'column'} className={styles.mainContainer}>
             <Grid item container direction={'row'} justifyContent={'space-between'}>
                 <Grid item className={styles.arrowContainer}>
-                    <IconButton component={Link} to={'/services'}>
+                    <IconButton component={Link} to='/services'>
                         <img src={backArrow} alt="Back to Services Page"/>
                     </IconButton>
                 </Grid>
                 {matchesMdDevice && <Grid item className={styles.arrowContainer}>
-                    <IconButton component={Link} to={'/mobile-apps'} onClick={setServiceMenu.bind(this, 2)}>
+                    <IconButton component={Link} to='/mobile-apps' onClick={setServiceMenu.bind(this, 2)}>
                         <img src={forwardArrow} alt="Forward to Mobile App Development"/>
                     </IconButton>
                 </Grid>}
@@ -102,7 +102,7 @@ function CustomSoftware({setSelectedMenu}) {
                     </Grid>
                 </Grid>
                 {!matchesMdDevice && <Grid item className={styles.arrowContainer}>
-                    <IconButton component={Link} to={'/mobile-apps'} onClick={setServiceMenu.bind(this, 2)}>
+                    <IconButton component={Link} to='/mobile-apps' onClick={setServiceMenu.bind(this, 2)}>
                         <img src={forwardArrow} alt="Forward to Mobile App Development"/>
                     </IconButton>
                 </Grid>}
