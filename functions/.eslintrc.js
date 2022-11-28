@@ -5,7 +5,11 @@ module.exports = {
     node: true,
   },
   extends: [
+    "eslint:recommended",
+    "google",
   ],
+  ignorePatterns: ["index.js"],
   rules: {
-  }
+    quotes: ["error", "double"],
+  },
 };
