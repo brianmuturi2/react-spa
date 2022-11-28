@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
+import axios from 'axios';
 
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -7,6 +8,9 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 import TextField from '@mui/material/TextField';
+import CircularProgress from '@mui/material/CircularProgress';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -15,33 +19,55 @@ import CallToAction from '../../components/ui/CallToAction/CallToAction';
 import styles from './Contact.module.css';
 import Button from '@mui/material/Button';
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 function Contact() {
 
     const [dialogOpen, setDialogOpen] = useState(false);
     const [formData, setFormData] = useState();
 
+    const [snackBar, setSnackBarState] = useState({
+        open: false,
+        vertical: 'top',
+        horizontal: 'center',
+    });
+
     const theme = useTheme();
     const matchesMdDevice = useMediaQuery(theme.breakpoints.down('lg'));
 
     function handleDialog(data) {
-        if (data) {
-            setFormData(data);
-            setDialogOpen(!dialogOpen);
+        setFormData(data);
+        setDialogOpen(!dialogOpen);
+
+        if (!data.name.length) {
+            setSnackBarState(prevState => ({...prevState, open: true}));
         }
     }
 
-    function submitForm(e) {
-        if (e === 'dismiss') {
-            setDialogOpen(!dialogOpen);
-        } else {
-            setDialogOpen(!dialogOpen);
-        }
+    function closeDialog() {
+        setDialogOpen(!dialogOpen);
+    }
+
+    function closeSnackBar() {
+        setSnackBarState(prevState => ({...prevState, open: false}));
     }
 
     return (
         <>
+            <Snackbar
+                anchorOrigin={{ vertical: snackBar.vertical, horizontal: snackBar.horizontal }}
+                open={snackBar.open}
+                key={snackBar.vertical + snackBar.horizontal}
+                autoHideDuration={6000} onClose={closeSnackBar}
+            >
+                <Alert onClose={closeSnackBar} severity="success" sx={{ width: '100%' }}>
+                    Message sent successfully!
+                </Alert>
+            </Snackbar>
             <Grid container direction={matchesMdDevice ? 'column' : 'row'} className={styles.contactContainer}>
-                <ContactForm onSubmit={handleDialog} title={'Contact Us'}/>
+                <ContactForm onSubmit={handleDialog} title={'Contact Us'} data={formData}/>
                 <Grid item md={8}>
                     <CallToAction fixedBackground={true}/>
                 </Grid>
@@ -50,10 +76,10 @@ function Contact() {
                 fullWidth
                 maxWidth={'md'}
                 open={dialogOpen}
-                onClose={submitForm}
+                onClose={closeDialog}
             >
                 <DialogContent>
-                    <ContactForm onSubmit={submitForm} title={'Confirm Message'} dialog={true} data={formData}/>
+                    <ContactForm onSubmit={handleDialog} title={'Confirm Message'} dialog={true} data={formData}/>
                 </DialogContent>
             </Dialog>
         </>
@@ -73,6 +99,10 @@ export function ContactForm({dialog, title, onSubmit, data}) {
     const [emailHelper, setEmailHelper] = useState('');
 
     const [message, setMessage] = useState('');
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const requestUrl = 'https://us-central1-material-ui-project-5fc65.cloudfunctions.net/sendMail\n';
 
     useEffect(() => {
         if (data) {
@@ -131,7 +161,25 @@ export function ContactForm({dialog, title, onSubmit, data}) {
         if (!dialog) {
             onSubmit(formData)
         } else {
-            onSubmit()
+            setIsLoading(!isLoading);
+
+            axios.get(requestUrl, {params: {
+                    name,
+                    phone,
+                    email,
+                    message
+                }})
+                .then(() => {
+                    setIsLoading(!isLoading);
+                    onSubmit({
+                        name: '',
+                        phone: '',
+                        email: '',
+                        message: ''
+                    })
+                }).catch(() => {
+                    setIsLoading(!isLoading);
+                });
         }
     }
 
@@ -217,13 +265,16 @@ export function ContactForm({dialog, title, onSubmit, data}) {
                     />
                 </Grid>
             </Grid>
-            <Grid item alignSelf={'center'}>
-                <Button
-                    disabled={!name.length || !message.length || !!phoneHelper.length || !!emailHelper.length}
-                    variant={'contained'}
-                    color={'secondary'}
-                    className={styles.submitBtn}
-                    onClick={handleSubmit}>Send Message</Button>
+            <Grid item container justifyContent={'center'}>
+                <Grid item>
+                    <Button
+                        disabled={!name.length || !message.length || !!phoneHelper.length || !!emailHelper.length}
+                        variant={'contained'}
+                        color={'secondary'}
+                        className={styles.submitBtn}
+                        onClick={handleSubmit}>Send Message</Button>
+                </Grid>
+                { dialog && isLoading && <CircularProgress/>}
             </Grid>
         </Grid>
     )
