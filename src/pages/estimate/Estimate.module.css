@@ -1,0 +1,88 @@
+.heading2 {
+    font-family: Raleway;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    color: #0B72B9;
+}
+
+.heading4 {
+    font-family: Raleway;
+    font-size: 1.75rem;
+    color: #0B72B9;
+    font-weight: 700;
+}
+
+.heading4_light {
+    font-weight: 400;
+}
+
+.heading6 {
+    font-family: Raleway;
+    font-size: 1rem;
+    color: #0B72B9;
+    font-weight: 700;
+}
+
+.body1 {
+    font-size: 1.25rem;
+    color: #868686;
+    font-weight: 300;
+}
+
+.subtitle1 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #0B72B9;
+    margin-bottom: 1em;
+}
+
+.mainContainer {
+    padding: 2em 5em;
+    height:63vh;
+}
+
+@media only screen and (max-width: 900px) {
+    .mainContainer {
+        padding: 2em 3em;
+    }
+}
+
+.widthContainer {
+    max-width: 60em;
+}
+
+.arrowContainer {
+    margin-top: 0.5em;
+}
+
+.rowContainer {
+    margin-top: 15em;
+}
+
+.serviceIcon {
+    height: 70px;
+}
+
+.submitBtn {
+    border-radius: 50px;
+    margin-right: 40px;
+    font-family: Pacifico;
+    text-transform: none;
+    font-size: 1rem;
+    color: white;
+    height: 45px;
+    width: 145px;
+}
+
+.contactFormContainer {
+    margin: 2em 0;
+}
+
+.dialogPointsContainer{
+    padding-left: 2em;
+}
+
+.formInput {
+    margin-top: 1.5em;
+}

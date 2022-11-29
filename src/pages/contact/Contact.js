@@ -102,7 +102,7 @@ export function ContactForm({dialog, title, onSubmit, data}) {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const requestUrl = 'https://us-central1-material-ui-project-5fc65.cloudfunctions.net/sendMail\n';
+    const requestUrl = 'https://us-central1-material-ui-project-5fc65.cloudfunctions.net/sendMail';
 
     useEffect(() => {
         if (data) {
