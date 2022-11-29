@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import Lottie from 'react-lottie'
 
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -8,16 +9,37 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
-
 import Grid from '@mui/material/Grid';
+
 import styles from './Estimate.module.css';
 
 import software from '../../assets/Custom Software Icon.svg';
 import mobile from '../../assets/mobileIcon.svg';
 import website from '../../assets/websiteIcon.svg';
+import check from '../../assets/check.svg';
+import send from '../../assets/send.svg';
+import camera from '../../assets/camera.svg';
+import upload from '../../assets/upload.svg';
+import person from '../../assets/person.svg';
+import persons from '../../assets/persons.svg';
+import people from '../../assets/people.svg';
+import info from '../../assets/info.svg';
+import bell from '../../assets/bell.svg';
+import users from '../../assets/users.svg';
+import iphone from '../../assets/iphone.svg';
+import gps from '../../assets/gps.svg';
+import customized from '../../assets/customized.svg';
+import data from '../../assets/data.svg';
+import android from '../../assets/android.svg';
+import globe from '../../assets/globe.svg';
+import biometrics from '../../assets/biometrics.svg';
 
+import backArrowDisabled from '../../assets/backArrowDisabled.svg';
+import forwardArrowDisabled from '../../assets/forwardArrowDisabled.svg';
 import backArrow from '../../assets/backArrow.svg';
 import forwardArrow from '../../assets/forwardArrow.svg';
+
+import estimateAnimation from '../../animations/estimateAnimation/data.json';
 
 const allQuestions = [
     {
@@ -98,6 +120,15 @@ function Estimate() {
 
     const [dialogOpen, setDialogOpen] = useState(false);
 
+    const documentsOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: estimateAnimation,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+    };
+
     function changeService() {
 
     }
@@ -115,15 +146,15 @@ function Estimate() {
             <Grid container direction={'row'} className={styles.mainContainer}>
                 <Grid item container direction={'column'} justifyContent={'space-between'} lg>
                     <Grid item>
-                        <Typography variant={'h4'} className={styles.heading4}>Estimate</Typography>
+                        <Typography variant={'h2'} className={styles.heading2}>Estimate</Typography>
                     </Grid>
                     <Grid item>
-
+                        <Lottie options={documentsOptions} height='80%' width='80%'/>
                     </Grid>
                 </Grid>
                 <Grid item container direction={'column'} justifyContent={'space-between'} lg alignItems={'center'} key={question.id}>
                     <Grid item>
-                        <Typography variant={'h4'} className={`${styles.heading4} ${styles.heading4_light}`}>{question.title}</Typography>
+                        <Typography variant={'h2'} className={`${styles.heading2} ${styles.heading2_light}`}>{question.title}</Typography>
                         {question.subtitle && <Typography variant={'body1'} className={styles.subtitle1}>{question.subtitle}</Typography>}
                     </Grid>
                     <Grid item container>
@@ -328,6 +359,7 @@ export function ContactForm({closeDialog}) {
                             variant={'contained'}
                             color={'secondary'}
                             className={styles.submitBtn}
+                            disabled={!name.length || !message.length || !!phoneHelper.length || !!emailHelper.length}
                             onClick={handleSubmit}>Place Request</Button>
                     </Grid>
                     { isLoading && <CircularProgress/>}

@@ -6,15 +6,15 @@
     color: #0B72B9;
 }
 
+.heading2_light {
+    font-weight: 400;
+}
+
 .heading4 {
     font-family: Raleway;
     font-size: 1.75rem;
     color: #0B72B9;
     font-weight: 700;
-}
-
-.heading4_light {
-    font-weight: 400;
 }
 
 .heading6 {
