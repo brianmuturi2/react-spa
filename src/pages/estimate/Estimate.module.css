@@ -38,8 +38,8 @@
 }
 
 .mainContainer {
-    padding: 2em 5em;
-    height:63vh;
+    padding: 5em;
+    /*height:63vh;*/
 }
 
 @media only screen and (max-width: 900px) {
@@ -66,7 +66,6 @@
 
 .submitBtn {
     border-radius: 50px;
-    margin-right: 40px;
     font-family: Pacifico;
     text-transform: none;
     font-size: 1rem;
