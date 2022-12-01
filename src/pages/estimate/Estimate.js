@@ -308,6 +308,13 @@ function Estimate() {
 
     const [totalCost, setTotalCost] = useState(0);
 
+    const [service, setService] = useState('');
+    const [platforms, setPlatforms] = useState([]);
+    const [features, setFeatures] = useState('');
+    const [customFeatures, setCustomFeatures] = useState('');
+    const [category, setCategory] = useState('');
+    const [users, setUsers] = useState('');
+
     const theme = useTheme();
     const matchesMdDevice = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -323,6 +330,7 @@ function Estimate() {
     function handleSubmit() {
         setDialogOpen(!dialogOpen);
         getTotal();
+        getPlatforms();
     }
 
     function closeDialog() {
@@ -386,12 +394,15 @@ function Estimate() {
         switch (newSelected.title) {
             case 'Custom Software Development':
                 setQuestions(softwareQuestions);
+                setService(newSelected.title);
                 break;
             case 'iOS/Android App Development':
                 setQuestions(softwareQuestions);
+                setService(newSelected.title);
                 break;
             case 'Website Development':
                 setQuestions(websiteQuestions);
+                setService(newSelected.title);
                 break;
             default:
                 setQuestions(newQuestions);
@@ -416,6 +427,18 @@ function Estimate() {
         }
 
         setTotalCost(cost);
+    }
+
+    function getPlatforms() {
+        let newPlatforms = [];
+
+        if (questions.length > 2) {
+            questions.filter(
+                question => question.title === 'Which platforms do you need supported?').map(
+                    question => question.options.filter(option => option.selected))[0].forEach(
+                        option => newPlatforms.push(option.title));
+        }
+        setPlatforms(newPlatforms);
     }
 
     return (
@@ -491,7 +514,10 @@ function Estimate() {
                 onClose={closeDialog}
             >
                 <DialogContent>
-                    <ContactForm closeDialog={closeDialog} cost={totalCost}/>
+                    <ContactForm
+                        closeDialog={closeDialog}
+                        cost={totalCost}
+                        service={service} platforms={platforms}/>
                 </DialogContent>
             </Dialog>
         </>
@@ -500,7 +526,7 @@ function Estimate() {
 
 export default Estimate
 
-export function ContactForm({closeDialog, cost}) {
+export function ContactForm({closeDialog, cost, service, platforms}) {
 
     const [name, setName] = useState('');
 
@@ -648,14 +674,56 @@ export function ContactForm({closeDialog, cost}) {
                 </Grid>
                 <Grid item container direction={'column'} alignItems={'center'} justifyContent={'space-between'} md className={styles.dialogPointsContainer}>
                     <Grid item container direction={'column'} alignItems={'flex-start'}>
-                        <Grid item>
-                            <Typography variant={'body1'} className={styles.body1}>You want an iOS & Android App</Typography>
+                        <Grid item container alignItems={'center'}>
+                            <Grid item className={styles.checkMark} md={1.5}>
+                                <img src={check} alt="checkmark"/>
+                            </Grid>
+                            <Grid item md={10}>
+                                <Typography variant={'body1'} className={styles.body1}>
+                                    You want {service}
+                                    {platforms.length > 0 ? ` for ${
+                                            //if only web application is selected...
+                                            platforms.indexOf("Web Application") > -1 &&
+                                            platforms.length === 1
+                                                ? //then finish sentence here
+                                                "a Web Application."
+                                                : //otherwise, if web application and another platform is selected...
+                                                platforms.indexOf("Web Application") > -1 &&
+                                                platforms.length === 2
+                                                    ? //then finish the sentence here
+                                                    `a Web Application and an ${platforms[1]}.`
+                                                    : //otherwise, if only one platform is selected which isn't web application...
+                                                    platforms.length === 1
+                                                        ? //then finish the sentence here
+                                                        `an ${platforms[0]}`
+                                                        : //otherwise, if other two options are selected...
+                                                        platforms.length === 2
+                                                            ? //then finish the sentence here
+                                                            "an iOS Application and an Android Application."
+                                                            : //otherwise if all three are selected...
+                                                            platforms.length === 3
+                                                                ? //then finish the sentence here
+                                                                "a Web Application, an iOS Application, and an Android Application."
+                                                                : null
+                                        }` : ''}
+                                </Typography>
+                            </Grid>
                         </Grid>
-                        <Grid item>
-                            <Typography variant={'body1'} className={styles.body1}>for more than 500 users</Typography>
+                        <Grid item container alignItems={'center'} className={styles.formInput}>
+                            <Grid item className={styles.checkMark} md={1.5}>
+                                <img src={check} alt="checkmark"/>
+                            </Grid>
+                            <Grid item md={10}>
+                                <Typography variant={'body1'} className={styles.body1}>Second option check</Typography>
+                            </Grid>
                         </Grid>
-                        <Grid item>
-                            <Typography variant={'body1'} className={styles.body1}>using camera, GPS, and a backend API.</Typography>
+                        <Grid item container alignItems={'center'} className={styles.formInput}>
+                            <Grid item className={styles.checkMark} md={1.5}>
+                                <img src={check} alt="checkmark"/>
+                            </Grid>
+                            <Grid item md={10}>
+                                <Typography variant={'body1'} className={styles.body1}>Third option check</Typography>
+                            </Grid>
                         </Grid>
                     </Grid>
                     <Grid item>
