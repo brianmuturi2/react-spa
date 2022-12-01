@@ -304,7 +304,7 @@ function Estimate() {
 
     const [dialogOpen, setDialogOpen] = useState(false);
 
-    const [questions, setQuestions] = useState(softwareQuestions);
+    const [questions, setQuestions] = useState(defaultQuestions);
 
     const theme = useTheme();
     const matchesMdDevice = useMediaQuery(theme.breakpoints.down('md'));
@@ -367,10 +367,33 @@ function Estimate() {
         const activeIndex = currentlyActive[0].id - 1;
 
         const newSelected = newQuestions[activeIndex].options[id - 1];
+        const previousSelected = currentlyActive[0]['options'].filter(option => option.selected)
 
-        newSelected.selected = !newSelected.selected;
+        switch (currentlyActive[0].subtitle) {
+            case 'Select one.':
+                if (previousSelected.length > 0) {
+                    previousSelected.forEach(option => option.selected = !option.selected)
+                }
+                newSelected.selected = !newSelected.selected;
+                break;
+            default:
+                newSelected.selected = !newSelected.selected;
+        }
 
-        setQuestions(newQuestions);
+        switch (newSelected.title) {
+            case 'Custom Software Development':
+                setQuestions(softwareQuestions);
+                break;
+            case 'iOS/Android App Development':
+                setQuestions(softwareQuestions);
+                break;
+            case 'Website Development':
+                setQuestions(websiteQuestions);
+                break;
+            default:
+                setQuestions(newQuestions);
+        }
+
     }
 
     return (
