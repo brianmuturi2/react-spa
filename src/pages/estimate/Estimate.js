@@ -360,6 +360,19 @@ function Estimate() {
         return currentlyActive[0].id === questions[questions.length - 1].id;
     }
 
+    function handleSelect(id) {
+        const newQuestions = cloneDeep(questions);
+
+        const currentlyActive = newQuestions.filter(question => question.active);
+        const activeIndex = currentlyActive[0].id - 1;
+
+        const newSelected = newQuestions[activeIndex].options[id - 1];
+
+        newSelected.selected = !newSelected.selected;
+
+        setQuestions(newQuestions);
+    }
+
     return (
         <>
             <Grid container direction={'row'} className={styles.mainContainer} style={{textAlign: matchesMdDevice ? 'center' : 'inherit'}} alignItems={matchesMdDevice ? 'center' : 'inherit'}>
@@ -385,7 +398,13 @@ function Estimate() {
                                     </Grid>
                                     <Grid item container>
                                         {question.options.map(option => (
-                                            <Grid item container direction={'column'} alignItems={'center'} md key={option.id}>
+                                            <Grid item container
+                                                  direction={'column'}
+                                                  alignItems={'center'}
+                                                  md
+                                                  key={option.id}
+                                                  component={Button}
+                                                  onClick={handleSelect.bind(this, option.id)} style={{backgroundColor: option.selected ? '#FFBA60' : '', borderRadius: 0}}>
                                                 <Grid item style={{textAlign: 'center'}}>
                                                     <Typography variant={'h6'} className={styles.heading6}>{option.title}</Typography>
                                                     {option.subtitle && <Typography variant={'body1'} className={styles.subtitle1}>{option.subtitle}</Typography>}
