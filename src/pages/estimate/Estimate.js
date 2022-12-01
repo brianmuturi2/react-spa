@@ -306,6 +306,8 @@ function Estimate() {
 
     const [questions, setQuestions] = useState(defaultQuestions);
 
+    const [totalCost, setTotalCost] = useState(0);
+
     const theme = useTheme();
     const matchesMdDevice = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -320,6 +322,7 @@ function Estimate() {
 
     function handleSubmit() {
         setDialogOpen(!dialogOpen);
+        getTotal();
     }
 
     function closeDialog() {
@@ -393,7 +396,26 @@ function Estimate() {
             default:
                 setQuestions(newQuestions);
         }
+    }
 
+    function getTotal() {
+        let cost = 0;
+
+        const selections = questions.map(question => question.options.filter(option => option.selected));
+
+        selections.forEach(selection => selection.forEach(option => cost += option.cost));
+
+        if (questions.length > 2) {
+            const userCost = questions.filter(
+                question => question.title === 'How many users do you expect?').map(
+                question => question.options.filter(option => option.selected)
+            )[0][0].cost;
+
+            cost -= userCost;
+            cost *= userCost;
+        }
+
+        setTotalCost(cost);
     }
 
     return (
@@ -469,7 +491,7 @@ function Estimate() {
                 onClose={closeDialog}
             >
                 <DialogContent>
-                    <ContactForm closeDialog={closeDialog}/>
+                    <ContactForm closeDialog={closeDialog} cost={totalCost}/>
                 </DialogContent>
             </Dialog>
         </>
@@ -478,7 +500,7 @@ function Estimate() {
 
 export default Estimate
 
-export function ContactForm({closeDialog}) {
+export function ContactForm({closeDialog, cost}) {
 
     const [name, setName] = useState('');
 
@@ -611,6 +633,17 @@ export function ContactForm({closeDialog}) {
                             rows={4}
                             onChange={handleInputChange}
                         />
+                    </Grid>
+                    <Grid item className={styles.formInput}>
+                        <Typography variant={'body1'} className={styles.body2} gutterBottom>
+                            We can create this digital solution for an estimated
+                            <span className={styles.cost}> ${cost.toFixed(2)}</span>
+                        </Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant={'body1'} className={styles.body2}>
+                            Fill out your name, phone number, and email, place your request, and we'll get back to you with details moving and a final price.
+                        </Typography>
                     </Grid>
                 </Grid>
                 <Grid item container direction={'column'} alignItems={'center'} justifyContent={'space-between'} md className={styles.dialogPointsContainer}>

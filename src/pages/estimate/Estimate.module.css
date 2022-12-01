@@ -30,6 +30,12 @@
     font-weight: 300;
 }
 
+.body2 {
+    font-size: 1rem;
+    color: #868686;
+    font-weight: 300;
+}
+
 .subtitle1 {
     font-size: 1rem;
     font-weight: 400;
@@ -84,4 +90,11 @@
 
 .formInput {
     margin-top: 1.5em;
+}
+
+.cost {
+    font-family: Raleway;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #FFBA60;
 }
