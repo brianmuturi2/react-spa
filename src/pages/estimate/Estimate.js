@@ -596,6 +596,9 @@ export function ContactForm({closeDialog, cost, service, platforms, features, cu
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const theme = useTheme();
+    const matchesMdDevice = useMediaQuery(theme.breakpoints.down('md'));
+
     const requestUrl = 'https://us-central1-material-ui-project-5fc65.cloudfunctions.net/sendMail';
 
     function handleInputChange(event) {
@@ -662,9 +665,9 @@ export function ContactForm({closeDialog, cost, service, platforms, features, cu
     const softwareSelection = (
         <Grid item container direction={'column'} alignItems={'flex-start'}>
         <Grid item container alignItems={'center'}>
-            <Grid item className={styles.checkMark} md={1.5}>
+            {!matchesMdDevice && (<Grid item className={styles.checkMark} md={1.5}>
                 <img src={check} alt="checkmark"/>
-            </Grid>
+            </Grid>)}
             <Grid item md={10}>
                 <Typography variant={'body1'} className={styles.body1}>
                     You want {service}
@@ -697,9 +700,9 @@ export function ContactForm({closeDialog, cost, service, platforms, features, cu
             </Grid>
         </Grid>
         <Grid item container alignItems={'center'} className={styles.formInput}>
-            <Grid item className={styles.checkMark} md={1.5}>
+            {!matchesMdDevice && (<Grid item className={styles.checkMark} md={1.5}>
                 <img src={check} alt="checkmark"/>
-            </Grid>
+            </Grid>)}
             <Grid item md={10}>
                 <Typography variant={'body1'} className={styles.body1}>
                     {"with "}
@@ -735,9 +738,9 @@ export function ContactForm({closeDialog, cost, service, platforms, features, cu
             </Grid>
         </Grid>
         <Grid item container alignItems={'center'} className={styles.formInput}>
-            <Grid item className={styles.checkMark} md={1.5}>
+            {!matchesMdDevice && (<Grid item className={styles.checkMark} md={1.5}>
                 <img src={check} alt="checkmark"/>
-            </Grid>
+            </Grid>)}
             <Grid item md={10}>
                 <Typography variant={'body1'} className={styles.body1}>
                     The custom features will be of {customFeature.toLowerCase()}
@@ -750,12 +753,12 @@ export function ContactForm({closeDialog, cost, service, platforms, features, cu
 
     const websiteSelection = (<Grid item container direction={'column'} alignItems={'flex-start'}>
         <Grid item container alignItems={'center'}>
-            <Grid item className={styles.checkMark} md={1.5}>
+            {!matchesMdDevice && (<Grid item className={styles.checkMark} md={1.5}>
                 <img src={check} alt="checkmark"/>
-            </Grid>
+            </Grid>)}
             <Grid item md={10}>
                 <Typography variant={'body1'} className={styles.body1}>
-                    You want {category === 'Basic' ? ' a Basic wbesite' : category === 'Interactive' ? ' an interactive website' : ' an E-Commerce'}
+                    You want {category === 'Basic' ? ' a Basic website' : category === 'Interactive' ? ' an interactive website' : ' an E-Commerce'}
                 </Typography>
             </Grid>
         </Grid>
@@ -830,7 +833,7 @@ export function ContactForm({closeDialog, cost, service, platforms, features, cu
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid item container direction={'column'} alignItems={'center'} justifyContent={'space-between'} md className={styles.dialogPointsContainer}>
+                <Grid item container direction={'column'} alignItems={'center'} justifyContent={'space-between'} md className={`${!matchesMdDevice ? styles.dialogPointsContainer : styles.dialogPointsContainerSmall}`}>
                     {category && websiteSelection}
                     {!category && softwareSelection}
                     <Grid item>
