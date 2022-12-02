@@ -11,6 +11,8 @@ import DialogContent from '@mui/material/DialogContent';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -300,6 +302,10 @@ const websiteQuestions = [
     }
 ];
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 function Estimate() {
 
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -314,6 +320,12 @@ function Estimate() {
     const [customFeature, setCustomFeature] = useState('');
     const [category, setCategory] = useState('');
     const [userGroup, setUsers] = useState('');
+
+    const [snackBar, setSnackBarState] = useState({
+        open: false,
+        vertical: 'top',
+        horizontal: 'center',
+    });
 
     const theme = useTheme();
     const matchesMdDevice = useMediaQuery(theme.breakpoints.down('md'));
@@ -336,8 +348,12 @@ function Estimate() {
         getCategory();
     }
 
-    function closeDialog() {
+    function closeDialog(e) {
         setDialogOpen(!dialogOpen);
+
+        if (e === 'success') {
+            setSnackBarState(prevState => ({...prevState, open: true}));
+        }
     }
 
     function nextQuestion() {
@@ -492,8 +508,42 @@ function Estimate() {
         }
     }
 
+    function estimateDisabled() {
+        let disabled = true;
+        const emptySelections = questions.map(
+            question => question.options.filter(
+                option => option.selected)).filter(
+                    question => question.length === 0
+        )
+
+        if (questions.length === 2 && emptySelections.length === 1) {
+            disabled = false;
+        }
+        if (questions.length === 1) {
+            disabled = true;
+        }
+        if (emptySelections.length < 3 && questions[questions.length - 1].options.filter(option => option.selected).length > 0) {
+            disabled = false;
+        }
+        return disabled;
+    }
+
+    function closeSnackBar() {
+        setSnackBarState(prevState => ({...prevState, open: false}));
+    }
+
     return (
         <>
+            <Snackbar
+                anchorOrigin={{ vertical: snackBar.vertical, horizontal: snackBar.horizontal }}
+                open={snackBar.open}
+                key={snackBar.vertical + snackBar.horizontal}
+                autoHideDuration={6000} onClose={closeSnackBar}
+            >
+                <Alert onClose={closeSnackBar} severity="success" sx={{ width: '100%' }}>
+                    Estimate sent successfully!
+                </Alert>
+            </Snackbar>
             <Grid container direction={'row'} className={styles.mainContainer} style={{textAlign: matchesMdDevice ? 'center' : 'inherit'}} alignItems={matchesMdDevice ? 'center' : 'inherit'}>
                 <Grid item container direction={'column'} justifyContent={'space-between'} lg alignItems={matchesMdDevice ? 'center' : 'inherit'}>
                     <Grid item>
@@ -554,6 +604,7 @@ function Estimate() {
                             variant={'contained'}
                             color={'secondary'}
                             className={styles.submitBtn}
+                            disabled={estimateDisabled()}
                             onClick={handleSubmit}>Get Estimate</Button>
                     </Grid>
                 </Grid>
@@ -638,25 +689,29 @@ export function ContactForm({closeDialog, cost, service, platforms, features, cu
         }
     }
 
-    const formData = {
-        name,
-        phone,
-        email,
-        message
-    };
+    function disableSubmit() {
+        return (
+            !name.length
+            || !message.length
+            || !!phoneHelper.length
+            || !!emailHelper.length
+            || (!category && (!service || !cost || !platforms || !features || !customFeature || !userGroup)))
+    }
 
     function handleSubmit() {
         setIsLoading(!isLoading);
 
         axios.get(requestUrl, {params: {
-                name,
-                phone,
-                email,
-                message
+                name, phone, email, message,
+                total: cost,
+                service, platforms, features,
+                customFeatures: customFeature,
+                users: userGroup,
+                category
             }})
             .then(() => {
                 setIsLoading(!isLoading);
-                closeDialog();
+                closeDialog('success');
             }).catch(() => {
             setIsLoading(!isLoading);
         });
@@ -811,6 +866,7 @@ export function ContactForm({closeDialog, cost, service, platforms, features, cu
                     <Grid item className={styles.formInput}>
                         <TextField
                             required
+                            placeholder='Tell us more about your project'
                             id="message"
                             label="Message"
                             value={message}
@@ -836,15 +892,19 @@ export function ContactForm({closeDialog, cost, service, platforms, features, cu
                 <Grid item container direction={'column'} alignItems={'center'} justifyContent={'space-between'} md className={`${!matchesMdDevice ? styles.dialogPointsContainer : styles.dialogPointsContainerSmall}`}>
                     {category && websiteSelection}
                     {!category && softwareSelection}
-                    <Grid item>
-                        <Button
-                            variant={'contained'}
-                            color={'secondary'}
-                            className={styles.submitBtn}
-                            disabled={!name.length || !message.length || !!phoneHelper.length || !!emailHelper.length}
-                            onClick={handleSubmit}>Place Request</Button>
+                    <Grid item container style={{marginTop: matchesMdDevice ? '2em' : ''}} justifyContent={'center'}>
+                        <Grid item>
+                            <Button
+                                variant={'contained'}
+                                color={'secondary'}
+                                className={styles.submitBtn}
+                                disabled={disableSubmit()}
+                                onClick={handleSubmit}>Place Request</Button>
+                        </Grid>
+                        <Grid item>
+                            { isLoading && <CircularProgress/>}
+                        </Grid>
                     </Grid>
-                    { isLoading && <CircularProgress/>}
                 </Grid>
             </Grid>
         </Grid>
